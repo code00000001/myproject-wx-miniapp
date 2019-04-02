@@ -1,5 +1,8 @@
 // pages/demo/demo.js
-const app = getApp()
+const app = getApp();
+
+import route from '../../utils/router.js';
+
 Page({
 
   /**
@@ -103,18 +106,27 @@ Page({
   },
 
   changeOne: function(){
-    wx.navigateTo({
-      url: '../pageOne/pageOne',
+    const url = '../pageOne/pageOne';
+    route(url, 'navigateTo').then(res => {
+      console.log('success')
+    }).catch(res => {
+      console.log('fail')
     })
   },
   changeTwo: function () {
-    wx.navigateTo({
-      url: '../pageTwo/pageTwo',
+    const url = '../pageTwo/pageTwo';
+    route(url, 'navigateTo').then(res => {
+      console.log('success');
+    }).catch(res => {
+      console.log('fail')
     })
   },
   changeThree: function () {
-    wx.navigateTo({
-      url: '../pageThree/pageThree',
+    const url = '../pageThree/pageThree';
+    route(url, 'navigateTo').then(res => {
+      console.log('success');
+    }).catch(res => {
+      console.log('fail')
     })
   }
 })

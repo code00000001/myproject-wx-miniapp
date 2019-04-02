@@ -4,6 +4,7 @@
  * Date: xxxx-xx-xx xx:xx
  */
 const app = getApp();
+import route from '../../utils/router.js'
 
 Page({
   data: {
@@ -42,7 +43,6 @@ Page({
   },
 
   onShow: function(){
-
   },
   camera: function(){
     var _this = this;
@@ -53,8 +53,11 @@ Page({
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
-        wx.navigateTo({
-          url: '../edit/edit?path='+tempFilePaths,
+        let url = '../edit/edit?path=' + tempFilePaths
+        route(url, 'navigateTo').then(res => {
+          console.log('success')
+        }).catch(res => {
+          console.log('fail')
         })
       }
     })
