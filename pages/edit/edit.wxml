@@ -1,0 +1,5 @@
+<!--pages/edit/edit.wxml-->
+<view class="container image">
+  <image src="{{src}}"></image>
+  <textarea placeholder="添加描述（400个字符）" maxlength="400" auto-focus="true"></textarea>
+</view>

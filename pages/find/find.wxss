@@ -1,1 +1,9 @@
-/* pages/find/find.wxss */
+.log-list {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  bottom: 30rpx;
+} 
