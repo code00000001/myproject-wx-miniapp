@@ -1,6 +1,9 @@
-
+/**
+ * Title: 发现界面
+ * Author: Masaki
+ * Date: xxxx-xx-xx xx:xx
+ */
 const app = getApp();
-
 
 Page({
   data: {
