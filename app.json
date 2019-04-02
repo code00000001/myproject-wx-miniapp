@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/find/find",
+    "pages/user/user",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "集视三维",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "#8ECDA9",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "assets/icons/rhombus.png",
+        "selectedIconPath": "assets/icons/rhombus_active.png",
+        "pagePath": "pages/index/index",
+        "text": "看点"
+      },
+      {
+        "iconPath": "assets/icons/camera.png",
+        "selectedIconPath": "assets/icons/camera_active.png",
+        "pagePath": "pages/find/find",
+        "text": "发现"
+      },
+      {
+        "iconPath": "assets/icons/user.png",
+        "selectedIconPath": "assets/icons/user_active.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "uploadFile": 30000,
+    "downloadFile": 30000
+  }
+}
