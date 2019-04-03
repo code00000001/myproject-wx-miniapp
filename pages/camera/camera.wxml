@@ -1,0 +1,13 @@
+<!--logs.wxml-->
+<view class="log-list">
+<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+    <camera
+  device-position="back"
+  flash="auto"
+  binderror="error"
+  style="width: 100%; height: 1000rpx;"
+></camera>
+      <button catchtap='camera'>{{msg}}</button>
+    </block>
+</view>

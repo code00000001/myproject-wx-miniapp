@@ -4,7 +4,7 @@
  * Date: xxxx-xx-xx xx:xx
  */
 
-import { fetchTestData } from '../../services/views.js';
+import fetchTestData  from '../../services/views.js';
 
 Page({
 

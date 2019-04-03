@@ -7,13 +7,14 @@
     "pages/edit/edit",
     "pages/pageOne/pageOne",
     "pages/pageTwo/pageTwo",
-    "pages/pageThree/pageThree"
+    "pages/pageThree/pageThree",
+    "pages/camera/camera"
   ],
   "window": {
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "集视三维",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "selectedColor": "#8ECDA9",

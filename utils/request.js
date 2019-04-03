@@ -18,6 +18,4 @@ const request = (url, {method, header, body}) => {
   });
 };
 
-module.exports = {
-  request,
-}
+export default request;

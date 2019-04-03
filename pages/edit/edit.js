@@ -13,6 +13,12 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.path)
+    wx.getImageInfo({
+      src: options.path,
+      success: function (res2) {
+        console.log(res2.orientation);
+      }
+    })
     this.setData({
       src: options.path
     })
@@ -50,7 +56,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
@@ -65,5 +71,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  look: function () {
+    console.log(this.data.src)
+    const urL = new Array(this.data.src)
+    console.log(urL)
+    wx.previewImage({
+      urls: urL
+    })
   }
 })
