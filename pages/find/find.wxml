@@ -1,5 +1,2 @@
 <!--pages/iii/find.wxml-->
-<view>
-  <button bindtap='cameraPage'>cameraPage</button>
-  <text>webview界面</text>
-</view>
+<web-view src="https://tumiv.com/"></web-view>
