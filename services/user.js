@@ -18,7 +18,9 @@ export const login = ({
   encryptedData, 
   iv 
 }) => {
+  const params = { code, appId, signature, rawData, encryptedData, iv, };
+  console.log(params);
   return request(`${baseRoute}/login`, {
-    body: { code, appId, signature, rawData, encryptedData, iv, },
+    body: params,
   });
 };

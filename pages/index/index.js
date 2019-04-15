@@ -19,35 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.checkSession({
-    //   success () {
-    //     console.log('code 未过期');
-    //   },
-    //   fail () {
-    //     console.log('code 已过期');
-    //   }
-    // })
-    wx.login({
-      timeout: 3000,
-      success (res) {
-        wx.request({
-          url: 'http://maps.mapsong.com:2000/wap/user/login',
-          data: {
-            code: res.code,
-            appId: 'wxcb35adbd2eeb9490'
-          },
-          success (res) {
-            console.log(res);
-          },
-          fail (err) {
-            console.error(err);
-          }
-        })
-      },
-      fail (err) {
-        console.error(err);
-      }
-    })
+    console.log(getApp().globalData);
   },
 
   /**

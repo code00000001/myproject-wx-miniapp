@@ -4,20 +4,16 @@
  * Date: 2019-04-02 15:57
  */
 
-const request = (url, {method, header, body}) => {
+export const request = (url, {method, header, body}) => {
   const _method = method || 'GET';
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
       method: _method,
       header: header,
-      data: body,
+      data: JSON.stringify(body),
       success: res => resolve(res),
       fail: err => reject(err),
     });
   });
 };
-
-module.exports = {
-  request,
-}
