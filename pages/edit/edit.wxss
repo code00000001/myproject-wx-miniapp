@@ -1,6 +1,53 @@
-/* pages/edit/edit.wxss */
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1120570_gtrhfhyx48k.eot?t=1555320486825'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1120570_gtrhfhyx48k.eot?t=1555320486825#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALYAAsAAAAABtAAAAKLAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBNIEsATYCJAMMCwgABCAFhG0HPBv4BciusCnDvUiJapkI4bA92e/NORfjm1E8/LfG/r6Z2UUlSTJJJJPTSSYJP51QSdAizUL86YemWdNeLd2GVm1cdgabdBdFa6rar3v39yX3c7+hF59qFCgBQoJwJADod5qO4D84JtKCBwKlBRbQtcaItj+f/3unf1oWyLyW5bSmjb38USfAOKCA9sY2WZnknsLwqoPcifME2o0pyu1u7h/BlMKeFogHJR2YKkQVRSy0CnXD2iJeVFrTU/oGnqPvxy/1mCKpMnvu3tWGD8vf+Fa+b+6dBpQYgW6ukDEPFOK8MXtoVIjCUe3mse7KWhHSXImmIVIb1nqnf7xE1Oz6TjBNc4lveHKCb26QQAZ1Mb8IrDN+8BEhRvoz2Y9L8EUvx5H8jm+xpG590FWvVsAnhq4856zfdheooTTyQxU46ljJkyr9YPmLoQ7Hp/4fppfyH4uLhd8oFNSkS4DmXEZAfk1fAsHn87a1uPq7dbaAr2lctLnAra0n8wU/TwO2FENn23LR1J7a8mcjgDtBlVJAww72+xtvHYKbCa2GRvhbjGbIWo3ThZ9HpcMSaq020G7O1uYOA4xRUdow64Ug9PpE0u0NWa8fuvC/qAz7R603RtFuPwb27DAZambHkMPko3uBytMt4Tp4Jm48INmOHZPXRaITMplKYK1cLRe2qEVmjgXZqawzCxRGJ7hJLqM41pgaHZLH5YA5bVYqoulNZU8nMGOHQRyM+JDrAlI8WosIOrOZyucPEKkt5jAdRF3xBDEyqndUU1YF6C1zCyLu5ZrMKamOMQEJhpZAm8RNYierobR5VIh4WFkwIp1qqrB2AjWX17cm37cL2tmLc6TIUdTXbaflqunHsPIy0C0JAAA=') format('woff2'),
+  url('//at.alicdn.com/t/font_1120570_gtrhfhyx48k.woff?t=1555320486825') format('woff'),
+  url('//at.alicdn.com/t/font_1120570_gtrhfhyx48k.ttf?t=1555320486825') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1120570_gtrhfhyx48k.svg?t=1555320486825#iconfont') format('svg'); /* iOS 4.1- */
+}
+page{
+  height: 100%;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 80rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-guanbi:before {
+  content: "\e71a";
+}
+
+.icon-xuanzhong:before {
+  content: "\e723";
+}
+
 .image{
+  align-items: center;
   display: flex;
+  height: 100%;
   flex-direction: column;
+  justify-content: space-around;
+}
+.editImage{
+  width: 700rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid black;
+}
+.editText{
+  width: 700rpx;
+  height: 400rpx;
+  border-radius: 10rpx;
   padding: 10rpx;
+  box-sizing: border-box;
+  border: 1rpx solid;
+}
+
+.choice{
+  display: flex;
+  width: 700rpx;
+  justify-content: space-between;
 }

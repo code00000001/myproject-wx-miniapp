@@ -5,9 +5,6 @@
     "pages/user/user",
     "pages/logs/logs",
     "pages/edit/edit",
-    "pages/pageOne/pageOne",
-    "pages/pageTwo/pageTwo",
-    "pages/pageThree/pageThree",
     "pages/camera/camera"
   ],
   "window": {

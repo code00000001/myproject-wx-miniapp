@@ -1,5 +1,9 @@
 <!--pages/edit/edit.wxml-->
-<view class="container image">
-  <image catchtap="look" src="{{src}}"></image>
-  <textarea placeholder="添加描述（400个字符）" maxlength="400" auto-focus="true"></textarea>
+<view class="image">
+  <image catchtap="look" src="{{src}}" class="editImage"></image>
+  <textarea placeholder="添加描述（400个字符）" maxlength="400" auto-focus="true" class="editText"></textarea>
+  <view class="choice">
+  <text class="iconfont icon-guanbi"></text>
+  <text class="iconfont icon-xuanzhong"></text>
+  </view>
 </view>

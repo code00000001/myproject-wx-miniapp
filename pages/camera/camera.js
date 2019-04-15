@@ -14,6 +14,12 @@ Page({
   },
 
   onLoad: function(){
+    wx.startDeviceMotionListening({
+      interval: 'ui'
+    })
+    wx.onDeviceMotionChange(res => {
+      console.log(res)
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -77,6 +83,7 @@ Page({
     ctx.takePhoto({
       quality: 'high',
       success: function (res) {
+        console.log('new I camera');
         wx.navigateTo({
           url: '../edit/edit?path=' + res.tempImagePath,
         }) 
