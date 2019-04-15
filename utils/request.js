@@ -4,7 +4,7 @@
  * Date: 2019-04-02 15:57
  */
 
-export const request = (url, {method, header, body}) => {
+const request = (url, {method, header, body}) => {
   const _method = method || 'GET';
   return new Promise((resolve, reject) => {
     wx.request({
@@ -18,3 +18,5 @@ export const request = (url, {method, header, body}) => {
     });
   });
 };
+
+module.exports = { request };

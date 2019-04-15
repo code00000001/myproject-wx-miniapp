@@ -9,7 +9,7 @@ const baseRoute = 'https://maps.mapsong.com:2000/wap/user';
 
 
 // Login to get token and some userinfo 
-export const login = ({ 
+const login = ({ 
   code, 
   appId, 
   signature, 
@@ -21,3 +21,5 @@ export const login = ({
     body: { code, appId, signature, rawData, encryptedData, iv, },
   });
 };
+
+module.exports = { login }
