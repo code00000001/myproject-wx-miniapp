@@ -3,22 +3,21 @@
  * Author: xxx
  * Date: xxxx-xx-xx xx:xx
  */
+const app = getApp();
 
 const userInfoTest = {
   name: '小白',
   url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
   level: 3,
   followings: {
-    count: 17,
-    lastOne: {
-      name: '大黄',
-    }
+    count: '--',
+    lastOne: {}
   },
   publishedSections: {
-    count: 34,
+    count: '--',
   },
   myMtl: {
-    count: 21,
+    count: '--',
   }
 }
 
@@ -41,21 +40,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(app.globalData);
+    app.globalData.isSigned &&
+    this.setData({
+      userinfo: app.globalData.userInfo,
+    })
   },
 
   /**

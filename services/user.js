@@ -3,10 +3,9 @@
  * Author: xxx
  * Date: xxxx-xx-xx xx:xx
  */
-
 import { request } from '../utils/request.js';
 
-const baseRoute = 'http://maps.mapsong.com:2000/wap/user';
+const baseRoute = 'https://maps.mapsong.com:2000/wap/user';
 
 
 // Login to get token and some userinfo 
