@@ -16,7 +16,7 @@ export const login = ({
   signature, 
   rawData, 
   encryptedData, 
-  iv ~
+  iv 
 }) => {
   return request(`${baseRoute}/login`, {
     body: { code, appId, signature, rawData, encryptedData, iv, },
