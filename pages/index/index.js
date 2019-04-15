@@ -28,8 +28,9 @@ Page({
         wx.hideLoading();
       })
       .catch(err => {
+        console.error(err);
         wx.showToast({
-          title: '登录失败',
+          title: err,
           icon: 'none'
         })
       })

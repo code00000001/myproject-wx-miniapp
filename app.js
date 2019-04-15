@@ -28,7 +28,7 @@ App({
                     const { code } = res;
 
                     login({ code, appId, signature, rawData, encryptedData, iv })
-                      .then(res => res.data.code === 200 ? resolve(res) : reject(err))
+                      .then(res => res.data.code === 200 ? resolve(res) : reject(res.data.msg))
                       .catch(err => reject(err));
                    
                   }
