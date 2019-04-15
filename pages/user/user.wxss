@@ -1,1 +1,85 @@
 /* pages/user/user.wxss */
+@import "/common/styles/colors.wxss";
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50%;
+}
+
+.profile image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin-top: 75rpx;
+}
+
+.profile__name {
+  margin: 30rpx 0;
+  font-size: 38rpx;
+  font-weight: bold;
+}
+
+.profile__lv {
+  font-size: 33rpx;
+  font-weight: bold;
+  line-height: 33rpx;
+}
+
+.navpad {
+  display: flex;
+  margin: 60rpx 0;
+  height: 500rpx;
+  width: 100%;
+}
+
+.navpad-item {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.navpad-item:first-child {
+  border-radius: 0 40rpx 40rpx 0;
+}
+.navpad-item:nth-child(2) {
+  margin: 0 12rpx;
+  border-radius: 40rpx;
+}
+.navpad-item:last-child {
+  border-radius: 40rpx 0 0 40rpx;
+}
+
+.navpad-item__title {
+  font-size: 29rpx;
+  font-weight: bold;
+  line-height: 100rpx;
+  text-align: center;
+  height: 100rpx;
+  width: 140rpx;
+  /* flex: 0 0 20%; */
+}
+
+.navpad-item__count {
+  font-size: 100rpx;
+  line-height: 60%;
+  margin-top: 100rpx;
+  flex: 1 1 auto;
+}
+
+.navpad-item__pre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  /* flex: 0 0 20%; */
+  height: 100rpx;
+}
+
+.footer {
+  text-align: center;
+  font-size: 28rpx;
+}

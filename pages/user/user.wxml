@@ -1,2 +1,47 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class='profile'>
+  <image src='{{ userinfo.url }}' mode='center'></image>
+  <text class='profile__name grey'>{{ userinfo.name }}</text>
+  <text class='profile__lv lightgrey'>LV.{{ userinfo.level }}</text>
+</view>
+<view class='navpad'>
+  <view class='navpad-item border border__nl'>
+    <view class='navpad-item__title border border__b'>
+      <text class='grey'>我的关注</text>
+    </view>
+    <view class='navpad-item__count'>
+      <text class='black'>{{ userinfo.followings.count }}</text>
+    </view>
+    <view class='navpad-item__pre'>
+      <text class='lightgrey'>最近关注</text>
+      <text class='lightgrey'>{{ userinfo.followings.lastOne.name }}</text>
+    </view>
+  </view>
+  <view class='navpad-item border'>
+    <view class='navpad-item__title border border__b'>
+      <text class='grey'>我的发布</text>
+    </view>
+    <view class='navpad-item__count'>
+      <text class='black'>{{ userinfo.publishedSections.count }}</text>
+    </view>
+    <view class='navpad-item__pre'>
+      <text class='lightgrey'>最近发布</text>
+      <text class='lightgrey'>昨天</text>
+    </view>
+  </view>
+  <view class='navpad-item border border__nr'>
+    <view class='navpad-item__title border border__b'>
+      <text class='grey'>我的记录</text>
+    </view>
+    <view class='navpad-item__count'>
+      <text class='black'>{{ userinfo.myMtl.count }}</text>
+    </view>
+    <view class='navpad-item__pre'>
+      <text class='lightgrey'>最近记录</text>
+      <text class='lightgrey'>昨天</text>
+    </view>
+  </view>
+</view>
+<view class='footer'>
+  <text class='lightgrey'>用户反馈</text>
+</view>
+

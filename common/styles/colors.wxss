@@ -1,0 +1,29 @@
+.grey {
+  color: rgb(71, 70, 71);
+}
+
+.lightgrey {
+  color: rgb(149, 148, 149);
+}
+
+.black {
+  color: rgb(17, 16, 17);
+}
+
+.border {
+  border: 3rpx solid rgb(204, 203, 204);
+}
+
+.border__nl {
+  border-left: 0;
+}
+
+.border__nr {
+  border-right: 0;
+}
+
+.border__b {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}

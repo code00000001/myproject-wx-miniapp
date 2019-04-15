@@ -4,13 +4,31 @@
  * Date: xxxx-xx-xx xx:xx
  */
 
+const userInfoTest = {
+  name: '小白',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+  level: 3,
+  followings: {
+    count: 17,
+    lastOne: {
+      name: '大黄',
+    }
+  },
+  publishedSections: {
+    count: 34,
+  },
+  myMtl: {
+    count: 21,
+  }
+}
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userinfo: userInfoTest,
   },
 
   /**
