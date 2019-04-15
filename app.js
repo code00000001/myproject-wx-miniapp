@@ -26,7 +26,7 @@ App({
                 success: res => {
                   const { code } = res,
                         appId = 'wxcb35adbd2eeb9490';
-                  // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                  // 发送 res.code 到后端换取 token
                   login({ code, appId, signature, rawData, encryptedData, iv })
                     .then(res => console.log(res))
                     .catch(err => console.log(err));

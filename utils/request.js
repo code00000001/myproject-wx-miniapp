@@ -12,7 +12,7 @@ export const request = (url, {method, header, body}) => {
       url: url,
       method: _method,
       header: header,
-      data: JSON.stringify(body),
+      data: body,
       
       success: res => resolve(res),
       fail: err => reject(err),
