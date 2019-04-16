@@ -1,5 +1,7 @@
 // pages/edit/edit.js
-import isIos from '../../utils/check.js'
+
+import { isIOS } from '../../utils/check';
+
 Page({
 
   /**
@@ -7,6 +9,7 @@ Page({
    */
   data: {
     src: null,
+    isiOS: false,
     disabled: false,
     x: 290,
     y: 150
@@ -16,17 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    isIos();
-    console.log(options.path)
-    wx.getImageInfo({
-      src: options.path,
-      success: function (res2) {
-        console.log(res2.orientation);
-      }
-    })
-    this.setData({
-      src: options.path
-    })
+    isIOS() && this.setData({isiOS: true});
   },
 
   /**
@@ -40,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.data.src)
   },
 
   /**
@@ -79,12 +72,13 @@ Page({
   },
 
   jump_camera: function(){
+    const _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
-      success:res => {
-        this.setData({
+      success:function(res){
+        _this.setData({
           src:res.tempFilePaths
         })
       }
@@ -92,9 +86,11 @@ Page({
   },
 
   preview: function(){
-    wx.previewImage({
-      urls: this.data.src
-    })
+    if(this.data.src){
+      wx.previewImage({
+        urls: this.data.src
+      })
+    }
   }
   
 })

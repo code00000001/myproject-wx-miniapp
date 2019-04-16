@@ -1,10 +1,12 @@
-const isIos = () => {
+
+const isIOS = () => {
   let result;
-    wx.getSystemInfo({
-      success: res => {
-      result == res.platform === 'ios'
-      }
-    })
-    return result
-}
-export default isIos;
+  wx.getSystemInfo({
+    success: res => {
+      result = res.platform === 'ios';
+    },
+  });
+  return result;
+};
+
+export { isIOS }

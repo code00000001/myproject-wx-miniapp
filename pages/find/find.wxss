@@ -44,7 +44,12 @@ page{
 
 .edit-form-item textarea {
   height: 350rpx;
-  padding-top: 28rpx;
+  padding-top: 27rpx;
+}
+
+.ios {
+  padding-top: 12rpx !important;
+  margin-left: -10rpx;
 }
 
 .form-placeholder {
