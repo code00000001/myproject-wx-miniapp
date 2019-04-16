@@ -1,20 +1,26 @@
 // pages/edit/edit.js
+import getSystem from '../../utils/check.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    src: '',
+    src: null,
     disabled: false,
-    x: 0,
-    y: 0
+    x: 290,
+    y: 150
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    getSystem().then(res => {
+      console.log(res.system)
+    }).catch(res => {
+      console.log(res)
+    });
     console.log(options.path)
     wx.getImageInfo({
       src: options.path,
@@ -87,6 +93,12 @@ Page({
           src:res.tempFilePaths
         })
       }
+    })
+  },
+
+  preview: function(){
+    wx.previewImage({
+      urls: this.data.src
     })
   }
   

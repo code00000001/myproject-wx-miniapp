@@ -62,7 +62,7 @@ page{
   height: 40rpx;
   display: inline-block;
   position: relative;
-  bottom: 280rpx;
+  bottom: -20rpx;
   left: 35rpx;
 }
 .edit_editText{
@@ -70,6 +70,7 @@ page{
   width: 650rpx;
   font-size: 30rpx;
   line-height: 30rpx;
+  vertical-align:top;
   height: 340rpx;
   border-radius: 10rpx;
   padding: 25rpx 40rpx 0 55rpx;
@@ -94,5 +95,4 @@ page{
 }
 .placeholderClass{
   color: #c7c7cc;
-  padding: 0;
 }
