@@ -1,4 +1,7 @@
 // pages/edit/edit.js
+
+import { isIOS } from '../../utils/check';
+
 Page({
 
   /**
@@ -6,6 +9,7 @@ Page({
    */
   data: {
     src: null,
+    isiOS: false,
     disabled: false,
     x: 0,
     y: 0
@@ -24,7 +28,9 @@ Page({
     })
     this.setData({
       src: options.path
-    })
+    });
+
+    isIOS() && this.setData({isiOS: true});
   },
 
   /**

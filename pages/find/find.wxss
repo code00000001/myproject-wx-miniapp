@@ -45,6 +45,11 @@ page{
   padding-top: 28rpx;
 }
 
+.ios {
+  padding-top: 12rpx !important;
+  margin-left: -10rpx;
+}
+
 .form-placeholder {
   font-size: 30rpx;
   line-height: 30rpx;

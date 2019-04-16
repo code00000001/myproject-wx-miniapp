@@ -19,6 +19,7 @@
       <image src="../../assets/icons/content.png"></image>
       <textarea 
         id="" cols="30" rows="10" 
+        class="{{ isiOS ? 'ios' : '' }}"
         placeholder="添加描述 (400字以内)"
         placeholder-class="form-placeholder"></textarea>
     </view>
