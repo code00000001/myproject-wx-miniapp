@@ -1,1 +1,5 @@
 /* pages/following/following.wxss */
+
+.following {
+  height: 200vh;
+}

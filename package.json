@@ -1,0 +1,25 @@
+{
+  "name": "convergency-3d",
+  "version": "1.0.0",
+  "description": "集视三维客户端(小程序)",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mivinci/convergency-3d.git"
+  },
+  "keywords": [
+    "wxapp",
+    "minapp",
+    "camera",
+    "webview"
+  ],
+  "author": "Mivinci, Masaki, Lamouryz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mivinci/convergency-3d/issues"
+  },
+  "homepage": "https://github.com/Mivinci/convergency-3d#readme"
+}

@@ -1,2 +1,5 @@
 <!--pages/following/following.wxml-->
 <text>pages/following/following.wxml</text>
+<view class='following'>
+  
+</view>

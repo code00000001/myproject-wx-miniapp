@@ -6,13 +6,14 @@
     "pages/logs/logs",
     "pages/following/following",
     "pages/post/post",
-    "pages/record/record"
+    "pages/record/record",
+    "pages/feedback/feedback"
   ],
   "window": {
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "集视三维",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "selectedColor": "#8ECDA9",

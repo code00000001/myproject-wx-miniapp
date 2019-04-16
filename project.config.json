@@ -9,10 +9,11 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.6.5",
 	"appid": "wxcb35adbd2eeb9490",
 	"projectname": "convergency-3d",
 	"debugOptions": {
@@ -37,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -57,7 +58,19 @@
 					"id": -1,
 					"name": "我的页面",
 					"pathName": "pages/user/user",
+					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的关注页面",
+					"pathName": "pages/following/following",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "2",
+					"pathName": "pages/edit/edit"
 				}
 			]
 		}

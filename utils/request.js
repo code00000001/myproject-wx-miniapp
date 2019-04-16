@@ -19,6 +19,6 @@ const request = (url, {method, header, body}) => {
   });
 };
 
-module.exports = { request };
+export { request };
 
 // Why the fuck import is available and export is like a fuckedup a...
