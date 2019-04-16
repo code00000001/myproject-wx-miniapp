@@ -3,6 +3,7 @@ page{
   background-color: #f4f5f8;
   align-items: center;
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -43,6 +44,7 @@ page{
 }
 
 .edit-form-item textarea {
+  height: 350rpx;
   padding-top: 27rpx;
 }
 
@@ -62,6 +64,8 @@ page{
   height: 75rpx;
 }
 .edit{
+  display: flex;
+  flex-direction: column;
   width: 700rpx;
   background-color: #fff;
   border-radius: 30rpx;

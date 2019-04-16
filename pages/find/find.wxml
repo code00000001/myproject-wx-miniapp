@@ -1,12 +1,11 @@
 <!--pages/edit/edit.wxml-->
 <view class="edit">
   <movable-area style="height: 450rpx;width:700rpx" class="movable" scale-area:false>
-    <movable-view x="{{x}}" y="{{y}}" direction="all" class="movable-view" catchtap='jump_camera'>
+    <movable-view x="{{ x }}" y="{{ y }}" direction="all" inertia:true class="movable-view" catchtap='jump_camera'>
       <image class="moveIcon" src='../../assets/icons/cameraIcon.png'></image>
     </movable-view>
-    <image src="{{src}}" class="edit_editImage" mode="aspectFill"></image>
+    <image src="{{ src }}" catchtap="preview" class="edit_editImage" mode="aspectFill"></image>
   </movable-area>
-
   <view class="edit-form">
     <view class="edit-form-item">
       <image src="../../assets/icons/title.png"></image>
@@ -18,14 +17,15 @@
     <view class="edit-form-item">
       <image src="../../assets/icons/content.png"></image>
       <textarea 
-        id="" cols="30" rows="10" 
         class="{{ isiOS ? 'ios' : '' }}"
         placeholder="添加描述 (400字以内)"
-        placeholder-class="form-placeholder"></textarea>
+        placeholder-class="form-placeholder"
+        maxlength='400'
+        ></textarea>
     </view>
   </view>
-
 </view>
+
 <view class="content_choice">
-  <button class="choice_btn" disabled="{{disabled}}">上传</button>
+  <button wx:if="{{ src }}" class="choice_btn">上传</button>
 </view>

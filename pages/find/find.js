@@ -11,8 +11,8 @@ Page({
     src: null,
     isiOS: false,
     disabled: false,
-    x: 0,
-    y: 0
+    x: 290,
+    y: 150
   },
 
   /**
@@ -72,17 +72,25 @@ Page({
   },
 
   jump_camera: function(){
-    let _this = this;
+    const _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
-      success(res) {
+      success:function(res){
         _this.setData({
           src: res.tempFilePaths
         })
       }
     })
+  },
+
+  preview: function(){
+    if(this.data.src){
+      wx.previewImage({
+        urls: this.data.src
+      })
+    }
   }
   
 })
