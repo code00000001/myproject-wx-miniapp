@@ -1,1 +1,98 @@
-/* pages/iii/find.wxss */
+page{
+  height: 100%;
+  background-color: #f4f5f8;
+}
+.content{
+  align-items: center;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.movable-view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  box-shadow: 10rpx 10rpx 10rpx rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.moveIcon{
+  width: 75rpx;
+  height: 75rpx;
+}
+.content_edit{
+  width: 700rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+}
+.edit_editImage{
+  height: 450rpx;
+  width: 700rpx;
+  border-radius: 30rpx;
+  box-shadow: 0rpx 5rpx 15rpx rgba(0, 0, 0, 0.2);
+}
+.edit_titleBox{
+  margin-left: 25rpx;
+  height: 80rpx;
+  display: flex;
+  border-bottom: 2rpx solid #efeff4;
+}
+.edit_titleIcon{
+  width: 60rpx;
+  height: 50rpx;
+  display: inline-block;
+  margin: auto 0;
+}
+.edit_title{
+  width: 600rpx;
+  display: inline-block;
+  padding-left: 15rpx;
+  padding-right: 10rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+}
+.edit_editTextBox{
+  height: 370rpx;
+}
+.edit_editTextIcon{
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  position: relative;
+  bottom: 280rpx;
+  left: 35rpx;
+}
+.edit_editText{
+  display: inline-block;
+  width: 650rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  height: 340rpx;
+  border-radius: 10rpx;
+  padding: 25rpx 40rpx 0 55rpx;
+  box-sizing: border-box;
+}
+
+.content_choice{
+  display: flex;
+  width: 700rpx;
+  justify-content: space-between;
+}
+
+.choice_btn{
+  width: 700rpx;
+  color: #fff;
+  font-size: 40rpx;
+  background-color: #79b6d7;
+}
+
+.button-hover{
+  background: #79b6f2
+}
+.placeholderClass{
+  color: #c7c7cc;
+  padding: 0;
+}

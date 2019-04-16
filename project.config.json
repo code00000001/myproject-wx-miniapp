@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.6.5",
 	"appid": "wxcb35adbd2eeb9490",
 	"projectname": "convergency-3d",
 	"debugOptions": {

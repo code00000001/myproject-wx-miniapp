@@ -2,10 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/find/find",
-    "pages/user/user",
-    "pages/logs/logs",
-    "pages/edit/edit",
-    "pages/camera/camera"
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,2 +1,23 @@
-<!--pages/iii/find.wxml-->
-<web-view src="https://tumiv.com/"></web-view>
+<!--pages/edit/edit.wxml-->
+<view class="content">
+  <view class="content_edit">
+  <movable-area style="height: 450rpx;width:700rpx" class="movable" scale-area:false>
+<movable-view x="{{x}}" y="{{y}}" direction="all" class="movable-view" catchtap='jump_camera'><image class="moveIcon" src='../../assets/icons/cameraIcon.png'></image></movable-view>
+    <image src="{{src}}"      class="edit_editImage" mode="aspectFill"></image>
+    </movable-area>
+    <view class="edit_titleBox">
+  <image src="../../assets/icons/title.png" class="edit_titleIcon"></image>
+  <input class="edit_title" placeholder='照片名称' placeholder-style="color:#c7c7cc"></input>
+  </view>
+  <view class="edit_editTextBox">
+  <image class="edit_editTextIcon"
+  src="../../assets/icons/content.png"></image>
+  <textarea placeholder="添加描述（400个字符）" maxlength="400"class="edit_editText" placeholder-class="placeholderClass" ></textarea>
+  </view>
+  </view>
+  <view class="content_choice">
+    <button class="choice_btn"
+    disabled="{{disabled}}"
+    >上传</button>
+  </view>
+</view>
