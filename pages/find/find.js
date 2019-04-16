@@ -19,17 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.path)
-    wx.getImageInfo({
-      src: options.path,
-      success: function (res2) {
-        console.log(res2.orientation);
-      }
-    })
-    this.setData({
-      src: options.path
-    });
-
     isIOS() && this.setData({isiOS: true});
   },
 
@@ -37,14 +26,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log('on show', this.data.src);
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log('on show', this.data.src);
   },
 
   /**
@@ -83,14 +72,14 @@ Page({
   },
 
   jump_camera: function(){
-    let _this = this
+    let _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
       success(res) {
         _this.setData({
-          src:res.tempFilePaths
+          src: res.tempFilePaths
         })
       }
     })
