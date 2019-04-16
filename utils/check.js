@@ -1,9 +1,10 @@
-const getSystem = () => {
-  return new Promise((resolve, reject) => {
+const isIos = () => {
+  let result;
     wx.getSystemInfo({
-      success: res => resolve(res),
-      fail: res => reject(res)
+      success: res => {
+      result == res.platform === 'ios'
+      }
     })
-  })
+    return result
 }
-export default getSystem;
+export default isIos;

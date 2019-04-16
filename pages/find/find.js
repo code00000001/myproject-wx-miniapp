@@ -1,5 +1,5 @@
 // pages/edit/edit.js
-import getSystem from '../../utils/check.js'
+import isIos from '../../utils/check.js'
 Page({
 
   /**
@@ -16,11 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getSystem().then(res => {
-      console.log(res.system)
-    }).catch(res => {
-      console.log(res)
-    });
+    isIos();
     console.log(options.path)
     wx.getImageInfo({
       src: options.path,
@@ -83,13 +79,12 @@ Page({
   },
 
   jump_camera: function(){
-    let _this = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
-      success(res) {
-        _this.setData({
+      success:res => {
+        this.setData({
           src:res.tempFilePaths
         })
       }
