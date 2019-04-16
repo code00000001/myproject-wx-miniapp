@@ -3,7 +3,8 @@
  * Author: xxx
  * Date: xxxx-xx-xx xx:xx
  */
-import { request } from '../utils/request.js';
+import { request } from '../utils/request';
+import { appId } from '../config/secret.config';
 
 const baseRoute = 'https://maps.mapsong.com:2000/wap/user';
 
@@ -22,4 +23,14 @@ const login = ({
   });
 };
 
-module.exports = { login }
+const fetchFollowings = ({ pageSize, pageIndex }) => 
+  request(`${baseRoute}/getFollowings`, {
+    body: {
+      token: getApp().globalData.token,
+      appId,
+      pageSize,
+      pageIndex
+    }
+  });
+
+module.exports = { login, fetchFollowings }
