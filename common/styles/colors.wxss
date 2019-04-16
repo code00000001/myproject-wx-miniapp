@@ -27,3 +27,7 @@
   border-left: 0;
   border-right: 0;
 }
+
+.shadow {
+  box-shadow: rgb(211, 211, 211) 0 0 20rpx;
+}

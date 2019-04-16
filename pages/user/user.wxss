@@ -1,6 +1,10 @@
 /* pages/user/user.wxss */
 @import "/common/styles/colors.wxss";
 
+/* page {
+  background-color: #f4f5f8;
+} */
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -39,7 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
+  box-shadow: rgb(211, 211, 211) 0 0 20rpx;
 }
 
 .navpad-item:first-child {
