@@ -11,8 +11,8 @@ Page({
     src: null,
     isiOS: false,
     disabled: false,
-    x: 290,
-    y: 150
+    x: wx.getSystemInfoSync().windowWidth*0.68,
+    y: wx.getSystemInfoSync().windowWidth*0.35
   },
 
   /**
@@ -72,14 +72,15 @@ Page({
   },
 
   jump_camera: function(){
-    const _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
-      success:function(res){
-        _this.setData({
-          src:res.tempFilePaths
+      success:res => {
+        this.setData({
+          src:res.tempFilePaths[0]
+        },() => {
+          this.onShow()
         })
       }
     })
