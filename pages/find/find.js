@@ -78,7 +78,7 @@ Page({
       sourceType: ['camera'],
       success:res => {
         this.setData({
-          src:res.tempFilePaths[0]
+          src:res.tempFilePaths
         },() => {
           this.onShow()
         })

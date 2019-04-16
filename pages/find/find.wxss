@@ -79,6 +79,7 @@ page{
 
 
 .content_choice{
+  height: 100rpx;
   display: flex;
   width: 700rpx;
   justify-content: space-between;
