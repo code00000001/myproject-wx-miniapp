@@ -4,18 +4,21 @@
  * Date: 2019-04-02 15:57
  */
 
-export const request = (url, {method, header, body}) => {
+const request = (url, {method, header, body}) => {
   const _method = method || 'GET';
-  console.log(body);
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
       method: _method,
       header: header,
-      data: JSON.stringify(body),
+      data: body,
       
       success: res => resolve(res),
       fail: err => reject(err),
     });
   });
 };
+
+module.exports = { request };
+
+// Why the fuck import is available and export is like a fuckedup a...

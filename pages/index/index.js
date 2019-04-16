@@ -4,7 +4,8 @@
  * Date: xxxx-xx-xx xx:xx
  */
 
-import { fetchTestData } from '../../services/views.js';
+
+const app = getApp();
 
 Page({
 
@@ -19,7 +20,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(getApp().globalData);
+    app.userLogin()
+      .then(res => {
+        app.globalData.userInfo = res.data.user;
+        app.globalData.token = res.data.token;
+        app.globalData.isSigned = true;
+        wx.hideLoading();
+      })
+      .catch(err => {
+        console.error(err);
+        wx.showToast({
+          title: err,
+          icon: 'none'
+        })
+      })
+    wx.showLoading({
+      mask: true,
+      title: '登录中'
+    })
   },
 
   /**
@@ -33,7 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(app.globalData.isSigned)
   },
 
   /**

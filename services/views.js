@@ -6,15 +6,4 @@
 
 import { request } from '../utils/request.js';
 
-const baseRoute = 'https://jsonplaceholder.typicode.com';
-
-const fetchTestData = params => {
-  return request(`${baseRoute}/todos`, {
-    method: 'GET',
-    body: params,
-  });
-}
-
-module.exports = {
-  fetchTestData,
-}
+const baseRoute = '';
