@@ -80,7 +80,7 @@ Page({
         this.setData({
           src: res.tempFilePaths
         }, () => {
-          this.onShow()
+          this.onShow();
         })
       }
     })
