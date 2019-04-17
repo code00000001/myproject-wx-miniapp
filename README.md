@@ -3,39 +3,33 @@
 
 
 
-#### find界面
 
-查询登录状态，在无权限的情况下无法进行相机访问
+## Bugs
 
+### 相机问题
+
+#### 现象
+
+wx.stopDeviceMotionListening (停止监听设备方向的变化) iOS上不能调用
+
+#### 原因
+
+未知
+
+#### 解决
+
+按照产品大哥说的, 先判断当前是否是iOS系统, 不是就调用接口监听设备方向, 是就...233
+
+判断设备操作系统方法
 ```javascript
-<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-<button wx:else></button>
-```
-
-
-
-相机确定后跳转edit界面
-
-```javascript
-const tempFilePaths = res.tempFilePaths;
-wx.navigateTo({
-  url: '../edit/edit?path='+tempFilePaths
-})
-```
-
-
-
-edit组件在onLoad时解析options.path作为image的src
-
-```javascript
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options.path)
-    this.setData({
-      src: options.path
-    })
-  }
+const isIOS = () => {
+  let result;
+  wx.getSystemInfo({
+    success: res => {
+      result = res.platform === 'ios';
+    },
+  });
+  return result;
+};
 ```
 
