@@ -87,3 +87,34 @@
   text-align: center;
   font-size: 28rpx;
 }
+
+.downforward {
+  animation: downward 0.8s  both;
+}
+
+.upforward {
+  animation: upward 0.8s  both;
+}
+
+
+@keyframes downward{
+0% {
+  transform: translateY(-50%);
+  opacity: 0;
+}
+100%{
+  transform: translateY(0%);
+  opacity: 1;
+}
+}
+
+@keyframes upward{
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  }

@@ -4,7 +4,7 @@
   <text class='profile__lv lightgrey'>LV.{{ userinfo.level }}</text>
 </view>
 <view class='navpad'>
-  <view class='navpad-item ' bindtap='handleNavpadClick' data-jumpto='../following/following'>
+  <view class='navpad-item downforward' bindtap='handleNavpadClick' data-jumpto='../following/following'>
     <view class='navpad-item__title border border__b'>
       <text class='grey'>我的关注</text>
     </view>
@@ -16,7 +16,7 @@
       <text class='lightgrey'>{{ userinfo.followings.lastOne.name }}</text>
     </view>
   </view>
-  <view class='navpad-item ' bindtap='handleNavpadClick' data-jumpto='../post/post'>
+  <view class='navpad-item upforward' bindtap='handleNavpadClick' data-jumpto='../post/post'>
     <view class='navpad-item__title border border__b'>
       <text class='grey'>我的发布</text>
     </view>
@@ -28,7 +28,7 @@
       <text class='lightgrey'>昨天</text>
     </view>
   </view>
-  <view class='navpad-item ' bindtap='handleNavpadClick' data-jumpto='../record/record'>
+  <view class='navpad-item downforward' bindtap='handleNavpadClick' data-jumpto='../record/record'>
     <view class='navpad-item__title border border__b'>
       <text class='grey'>我的记录</text>
     </view>

@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Mivinci/convergency-3d/issues"
   },
-  "homepage": "https://github.com/Mivinci/convergency-3d#readme"
+  "homepage": "https://github.com/Mivinci/convergency-3d#readme",
+  "devDependencies": {
+    "mockjs": "^1.0.1-beta3"
+  }
 }
