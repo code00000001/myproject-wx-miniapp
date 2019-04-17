@@ -1,8 +1,46 @@
 // pages/post/post.js
 
-import posts from '../../mock/posts';
-
-const postTestData = posts;
+const postsTestData = [{
+  name: '我是标题',
+  readCount: 250,
+  commentCount: 25,
+  wowCount: 56,
+  publishTime: '2019-04-01',
+  description: '',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+}, {
+  name: '我是个长标题',
+  readCount: 250,
+  commentCount: 25,
+  wowCount: 56,
+  publishTime: '2019-04-01',
+  description: '',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+}, {
+  name: '我是个超级长的标题',
+  readCount: 250,
+  commentCount: 25,
+  wowCount: 56,
+  publishTime: '2019-04-01',
+  description: '',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+}, {
+  name: '标题一',
+  readCount: 250,
+  commentCount: 25,
+  wowCount: 56,
+  publishTime: '',
+  description: '',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+}, {
+  name: '标题一',
+  readCount: 250,
+  commentCount: 25,
+  wowCount: 56,
+  publishTime: '',
+  description: '',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+}];
 
 Page({
 
@@ -10,14 +48,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    posts: postTestData,
+    posts: postsTestData,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(postTestData);
+
   },
 
   /**
