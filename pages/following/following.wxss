@@ -40,8 +40,3 @@
   margin: 15rpx 0;
   text-align: center;
 }
-
-page {
-  display: flex;
-  
-}
