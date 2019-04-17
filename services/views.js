@@ -5,5 +5,14 @@
  */
 
 import { request }  from '../utils/request.js';
+import { appId } from '../config/secret.config';
 
-const baseRoute = '';
+const baseRoute = 'https://maps.mapsong.com:2000/wap/user';
+
+export const fetchRecordSrc = () =>
+  request(`${baseRoute}/getMtlManagePage`, {
+    body: {
+      appId,
+      token: getApp().globalData.token
+    }
+  })

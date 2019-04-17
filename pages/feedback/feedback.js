@@ -1,4 +1,5 @@
 // pages/feedback/feedback.js
+import { fetchRecordSrc } from '../../services/views'
 Page({
 
   /**
