@@ -1,16 +1,22 @@
 // pages/edit/edit.js
 
 import { isIOS } from '../../utils/check';
-
+import { uploadFind } from '../../services/find';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    timer: null,
     src: null,
     isiOS: false,
     disabled: false,
+    title:null,
+    content:null,
+    gps:null,
+    posture:null,
+    createTime:null,
     x: wx.getSystemInfoSync().windowWidth*0.68,
     y: wx.getSystemInfoSync().windowWidth*0.35
   },
@@ -20,6 +26,7 @@ Page({
    */
   onLoad: function (options) {
     isIOS() && this.setData({isiOS: true});
+    console.log(typeof(uploadFind))
   },
 
   /**
@@ -92,6 +99,48 @@ Page({
         urls: this.data.src
       })
     }
+  },
+
+  getTitle: function(e){
+    clearTimeout(this.data.timer);
+    this.data.timer = setTimeout(() => {
+      this.setData({
+        title: e.detail.value
+      })
+  },800)
+  },
+
+
+  getContent: function(e){
+    clearTimeout(this.data.timer);
+    this.data.timer = setTimeout(() => {
+      this.setData({
+        content: e.detail.value
+      })
+  },800)
+  },
+
+
+  uploadFn: function() {
+    console.log(typeof(uploadFind))
+    const { title, description, gps, posture, createTime } = this.data;
+    uploadFind({
+      filePath: this.data.src[0],
+      name: 'image'
+    },{
+      gps,
+      posture,
+      createTime,
+      title,
+      description
+    } 
+    ).then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
-  
+
+
 })

@@ -19,6 +19,26 @@ const request = (url, {method, header, body}) => {
   });
 };
 
-export { request };
+const upload = (url, {filePath, name}, { token, appId, gps, posture, createTime, title, description }) => {
+  return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url,
+        filePath,
+        name,
+        formData: {
+          token,
+          appId,
+          gps,
+          posture,
+          createTime,
+          title,
+          description
+        },
+        success: res => resolve(res),
+        fail: err => reject(err),
+      })
+  })
+}
 
-// Why the fuck import is available and export is like a fuckedup a...
+export { upload, request }
+
