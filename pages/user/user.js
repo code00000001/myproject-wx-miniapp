@@ -1,7 +1,25 @@
-// pages/demo/demo.js
+/**
+ * Title: 我的页面
+ * Author: xxx
+ * Date: xxxx-xx-xx xx:xx
+ */
 const app = getApp();
 
-import route from '../../utils/router.js';
+const userInfoTest = {
+  name: '小白',
+  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+  level: 3,
+  followings: {
+    count: '--',
+    lastOne: {}
+  },
+  publishedSections: {
+    count: '--',
+  },
+  myMtl: {
+    count: '--',
+  }
+}
 
 Page({
 
@@ -9,56 +27,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msg: 'demo',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    userinfo: userInfoTest,
+  },
+
+  handleNavpadClick: function (event) {
+    wx.navigateTo({
+      url: event.currentTarget.dataset.jumpto,
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+  onLoad: function (options) {
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(app.globalData);
+    app.globalData.isSigned &&
+    this.setData({
+      userinfo: app.globalData.userInfo,
+    })
   },
 
   /**

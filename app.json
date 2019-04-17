@@ -2,7 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/find/find",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/logs/logs",
+    "pages/following/following",
+    "pages/post/post",
+    "pages/record/record",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",

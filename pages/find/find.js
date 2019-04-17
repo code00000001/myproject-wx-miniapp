@@ -1,7 +1,7 @@
 // pages/edit/edit.js
 
 import { isIOS } from '../../utils/check';
-import uploadFind from '../../services/find';
+import { uploadFind } from '../../services/find';
 Page({
 
   /**
@@ -14,6 +14,9 @@ Page({
     disabled: false,
     title:null,
     content:null,
+    gps:null,
+    posture:null,
+    createTime:null,
     x: wx.getSystemInfoSync().windowWidth*0.68,
     y: wx.getSystemInfoSync().windowWidth*0.35
   },
@@ -23,20 +26,21 @@ Page({
    */
   onLoad: function (options) {
     isIOS() && this.setData({isiOS: true});
+    console.log(typeof(uploadFind))
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log('on show', this.data.src);
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(this.data.src)
+    console.log('on show', this.data.src);
   },
 
   /**
@@ -79,11 +83,11 @@ Page({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
-      success:res => {
+      success: res => {
         this.setData({
-          src:res.tempFilePaths
-        },() => {
-          this.onShow()
+          src: res.tempFilePaths
+        }, () => {
+          this.onShow();
         })
       }
     })
@@ -116,8 +120,27 @@ Page({
   },800)
   },
 
-  uploadFn: function(){
-    
+
+  uploadFn: function() {
+    console.log(typeof(uploadFind))
+    const { title, description, gps, posture, createTime } = this.data;
+    uploadFind({
+      filePath: this.data.src[0],
+      name: 'image'
+    },{
+      gps,
+      posture,
+      createTime,
+      title,
+      description
+    } 
+    ).then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
-  
+
+
 })

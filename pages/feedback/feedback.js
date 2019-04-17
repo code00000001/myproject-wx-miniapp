@@ -1,12 +1,4 @@
-/**
- * Title: 看点页面
- * Author: xxx
- * Date: xxxx-xx-xx xx:xx
- */
-
-
-const app = getApp();
-
+// pages/feedback/feedback.js
 Page({
 
   /**
@@ -20,24 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.userLogin()
-      .then(res => {
-        app.globalData.userInfo = res.data.user;
-        app.globalData.token = res.data.token;
-        app.globalData.isSigned = true;
-        wx.hideLoading();
-      })
-      .catch(err => {
-        console.error(err);
-        wx.showToast({
-          title: err,
-          icon: 'none'
-        })
-      })
-    wx.showLoading({
-      mask: true,
-      title: '登录中'
-    })
+
   },
 
   /**
@@ -51,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.globalData.isSigned)
+
   },
 
   /**

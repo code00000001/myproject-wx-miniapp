@@ -8,4 +8,5 @@ const isIOS = () => {
   });
   return result;
 };
+
 export { isIOS }

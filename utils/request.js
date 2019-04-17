@@ -12,20 +12,27 @@ const request = (url, {method, header, body}) => {
       method: _method,
       header: header,
       data: body,
+      
       success: res => resolve(res),
       fail: err => reject(err),
     });
   });
 };
 
-const upload = (url, {filePath, name}, ...formData) => {
+const upload = (url, {filePath, name}, { token, appId, gps, posture, createTime, title, description }) => {
   return new Promise((resolve, reject) => {
       wx.uploadFile({
-        url: url,
-        filePath: filePath,
-        name: name,
+        url,
+        filePath,
+        name,
         formData: {
-          ...formData
+          token,
+          appId,
+          gps,
+          posture,
+          createTime,
+          title,
+          description
         },
         success: res => resolve(res),
         fail: err => reject(err),

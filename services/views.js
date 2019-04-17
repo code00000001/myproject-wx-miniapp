@@ -6,13 +6,4 @@
 
 import { request }  from '../utils/request.js';
 
-const baseRoute = 'https://jsonplaceholder.typicode.com';
-
-const fetchTestData = params => {
-  return request(`${baseRoute}/todos`, {
-    method: 'GET',
-    body: params,
-  });
-}
-
-export default fetchTestData;
+const baseRoute = '';
