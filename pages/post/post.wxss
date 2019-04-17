@@ -16,7 +16,7 @@
   width: 180rpx;
   height: 140rpx;
   margin: 14rpx;
-  border-radius: 12rpx;
+  border-radius: 10rpx;
 }
 
 .post-item__main {

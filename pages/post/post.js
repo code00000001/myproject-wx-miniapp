@@ -97,7 +97,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('Bottom touched');
   },
 
   /**
@@ -105,5 +105,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  previewImage: function (event) { 
+    wx.previewImage({
+      urls: [event.currentTarget.dataset.src],
+    });
   }
 })
