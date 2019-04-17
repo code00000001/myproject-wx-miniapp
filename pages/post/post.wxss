@@ -1,15 +1,41 @@
 @import "../../common/styles/colors.wxss";
-
-.post {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@import "../../common/styles/layout.wxss";
 
 .post-item {
   display: flex;
   width: 90%;
   margin-top: 25rpx;
+  /* animation: moveInFromRight 1s forwards;
+  transform: translateX(-120%); */
+}
+
+.post-item:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.post-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.post-item:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.post-item:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+@keyframes moveInFromRight {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .post-item > image {
