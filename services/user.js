@@ -5,8 +5,9 @@
  */
 import { request } from '../utils/request';
 import { appId } from '../config/secret.config';
+import baseUrl from '../config/proxy.config';
 
-const baseRoute = 'https://maps.mapsong.com:2000/wap/user';
+const baseRoute = `${baseUrl}:2000/wap/user`;
 
 
 // Login to get token and some userinfo 
