@@ -4,7 +4,7 @@
  * Date: 2019-04-02 15:57
  */
 
-import request  from '../utils/request.js';
+import { request }  from '../utils/request.js';
 
 const baseRoute = 'https://jsonplaceholder.typicode.com';
 

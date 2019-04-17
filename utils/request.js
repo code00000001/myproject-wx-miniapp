@@ -18,4 +18,20 @@ const request = (url, {method, header, body}) => {
   });
 };
 
-export default request;
+const upload = (url, {filePath, name}, ...formData) => {
+  return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: url,
+        filePath: filePath,
+        name: name,
+        formData: {
+          ...formData
+        },
+        success: res => resolve(res),
+        fail: err => reject(err),
+      })
+  })
+}
+
+export { upload, request }
+

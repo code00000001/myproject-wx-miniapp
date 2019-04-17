@@ -11,7 +11,8 @@
     <view class="edit-form-item">
       <image src="../../assets/icons/title.png"></image>
       <input 
-        type="text" 
+        type="text"
+        bindinput="getTitle"
         placeholder="照片名称" 
         placeholder-class="form-placeholder" />
     </view>
@@ -19,7 +20,8 @@
       <image src="../../assets/icons/content.png"></image>
       <textarea 
         id="" cols="30" rows="10" 
-        class="{{ isiOS ? 'ios' : '' }}"
+        bindinput="getContent"
+        class="{{ isiOS ? 'ios' : ''}}"
         placeholder="添加描述 (400字以内)"
         placeholder-class="form-placeholder"
         maxlength='400'
@@ -28,5 +30,5 @@
   </view>
 </view>
 <view class="content_choice">
-  <button wx:if="{{src}}" class="choice_btn">上传</button>
+  <button wx:if="{{src}}" class="choice_btn" catchtap="uploadFn">上传</button>
 </view>

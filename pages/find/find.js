@@ -1,16 +1,19 @@
 // pages/edit/edit.js
 
 import { isIOS } from '../../utils/check';
-
+import uploadFind from '../../services/find';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    timer: null,
     src: null,
     isiOS: false,
     disabled: false,
+    title:null,
+    content:null,
     x: wx.getSystemInfoSync().windowWidth*0.68,
     y: wx.getSystemInfoSync().windowWidth*0.35
   },
@@ -92,6 +95,29 @@ Page({
         urls: this.data.src
       })
     }
+  },
+
+  getTitle: function(e){
+    clearTimeout(this.data.timer);
+    this.data.timer = setTimeout(() => {
+      this.setData({
+        title: e.detail.value
+      })
+  },800)
+  },
+
+
+  getContent: function(e){
+    clearTimeout(this.data.timer);
+    this.data.timer = setTimeout(() => {
+      this.setData({
+        content: e.detail.value
+      })
+  },800)
+  },
+
+  uploadFn: function(){
+    
   }
   
 })
