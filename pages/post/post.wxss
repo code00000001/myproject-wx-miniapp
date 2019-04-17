@@ -1,1 +1,57 @@
-/* pages/post/post.wxss */
+@import "../../common/styles/colors.wxss";
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-item {
+  display: flex;
+  width: 90%;
+  margin-top: 25rpx;
+}
+
+.post-item > image {
+  width: 180rpx;
+  height: 140rpx;
+  margin: 14rpx;
+  border-radius: 10rpx;
+}
+
+.post-item__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1 1 auto;
+}
+
+.post-item__title {
+  font-size: 35rpx;
+}
+
+.post-item__date {
+  font-size: 30rpx;
+}
+
+.post-item__count {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.post-item__count image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.post-item__count-item {
+  display: flex;
+}
+
+.post-item__count-item text {
+  color: #bababa;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}

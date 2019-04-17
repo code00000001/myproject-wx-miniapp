@@ -1,2 +1,28 @@
-<!--pages/post/post.wxml-->
-<text>pages/post/post.wxml</text>
+<view class="post" wx:for="{{ posts }}" wx:key="unique">
+  <view class="post-item shadow radius">
+    <image 
+      src="{{ item.url }}" 
+      mode="aspectFill"
+      lazy-load="true"
+      data-src="{{ item.url }}"
+      catchtap="previewImage"></image>
+    <view class="post-item__main">
+      <view class="post-item__title grey">{{ item.name }}</view>
+      <view class="post-item__date grey">{{ item.publishTime }}</view>
+      <view class="post-item__count">
+        <view class="post-item__count-item">
+          <image src="../../assets/icons/view.png"></image>
+          <text>{{ item.readCount }}</text>
+        </view>
+        <view class="post-item__count-item">
+          <image src="../../assets/icons/comment.png"></image>
+          <text>{{ item.commentCount }}</text>
+        </view>
+        <view class="post-item__count-item">
+          <image src="../../assets/icons/like.png"></image>
+          <text>{{ item.wowCount }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
