@@ -23,14 +23,14 @@ const login = ({
   });
 };
 
-const fetchFollowings = ({ pageSize, pageIndex }) => 
+const fetchFollowings = (token, { pageSize, pageIndex }) => 
   request(`${baseRoute}/getFollowings`, {
     body: {
-      token: getApp().globalData.token,
+      token: token || getApp().globalData.token,
       appId,
       pageSize,
       pageIndex
     }
   });
 
-module.exports = { login, fetchFollowings }
+export { login, fetchFollowings }
