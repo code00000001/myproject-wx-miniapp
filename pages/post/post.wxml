@@ -1,5 +1,7 @@
-<view class="post" wx:for="{{ posts }}" wx:key="unique">
-  <view class="post-item shadow radius">
+<view class="column">
+  <view 
+    class="post-item shadow radius"
+    wx:for="{{ posts }}" wx:key="unique">
     <image 
       src="{{ item.url }}" 
       mode="aspectFill"

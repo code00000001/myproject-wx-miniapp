@@ -1,5 +1,42 @@
-/* pages/following/following.wxss */
+@import "../../common/styles/layout.wxss";
+@import "../../common/styles/colors.wxss";
 
-.following {
-  height: 200vh;
+.flw-item {
+  display: flex;
+  width: 90%;
+  margin-top: 25rpx;
+}
+
+.flw-item > image {
+  width: 82rpx;
+  height: 82rpx;
+  margin: 14rpx;
+  border-radius: 50%;
+}
+
+.flw-item__main {
+  flex: 1 1 auto;
+}
+
+.flw-item__main__l__name {
+
+}
+
+.flw-item__tail {
+  
+}
+
+.flw-item__tail text {
+  font-size: 26rpx;
+  padding: 10rpx 28rpx;
+  margin-right: 25rpx;
+  border-radius: 10rpx;
+  background-color: #ebeaeb;
+}
+
+.flw-tip__bottom {
+  font-size: 30rpx;
+  color: #bababa;
+  margin: 15rpx 0;
+  text-align: center;
 }
