@@ -5,5 +5,6 @@
  */
 
 import { request }  from '../utils/request.js';
+import baseUrl from '../config/proxy.config';
 
-const baseRoute = '';
+const baseRoute = `${baseRoute}:2000`;
