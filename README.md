@@ -14,7 +14,7 @@
 
 #### Cause
 
-Office doc says it's bug of minapp itself.
+Official doc says it's bug of minapp itself.
 
 #### 解决
 
