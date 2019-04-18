@@ -11,7 +11,7 @@ App({
     wx.setStorageSync('logs', logs)
 
   },
-  userLogin: function () {
+  prepareLogin: function () {
     return new Promise((resolve, reject) => {
       wx.getSetting({
         success: res => {
@@ -42,6 +42,39 @@ App({
         },
         fail: err => reject(err),
       })
+    })
+  },
+  doLogin: function () {
+    this.prepareLogin()
+      .then(res => {
+        this.globalData.userInfo = res.data.user;
+        this.globalData.token = res.data.token;
+        this.globalData.isSigned = true;
+        wx.hideLoading();
+      })
+      .then(() => {
+        wx.switchTab({
+          url: '../user/user'
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        wx.hideLoading();
+        wx.showModal({
+          title: '登录失败',
+          content: err,
+          showCancel: true,
+          confirmText: '重新登录',
+          success: res => {
+            if (res.confirm) {
+              this.doLogin();
+            }
+          }
+        });
+      })
+    wx.showLoading({
+      mask: true,
+      title: '登录中'
     })
   },
   globalData: {

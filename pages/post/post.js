@@ -2,47 +2,7 @@
 
 import { fetchPosts } from '../../services/user';
 
-const postsTestData = [{
-  name: '我是标题',
-  readCount: 250,
-  commentCount: 25,
-  wowCount: 56,
-  publishTime: '2019-04-01',
-  description: '',
-  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
-}, {
-  name: '我是个长标题',
-  readCount: 250,
-  commentCount: 25,
-  wowCount: 56,
-  publishTime: '2019-04-01',
-  description: '',
-  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
-}, {
-  name: '我是个超级长的标题',
-  readCount: 250,
-  commentCount: 25,
-  wowCount: 56,
-  publishTime: '2019-04-01',
-  description: '',
-  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
-}, {
-  name: '标题一',
-  readCount: 250,
-  commentCount: 25,
-  wowCount: 56,
-  publishTime: '',
-  description: '',
-  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
-}, {
-  name: '标题一',
-  readCount: 250,
-  commentCount: 25,
-  wowCount: 56,
-  publishTime: '',
-  description: '',
-  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
-}];
+const app = getApp();
 
 Page({
 
@@ -60,14 +20,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    !app.globalData.isSigned && app.doLogin();
+
     fetchPosts({
       pageSize: 15,
       pageIndex: 1
     }).then(res => this.setData({
       posts: res.data.list,
       pageCount: res.data.pageCount
-    }))
-      .catch(err => console.error(err));
+    })).then(() => {
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
+    }).catch(err => console.error(err));
+
+    wx.startPullDownRefresh();
+    wx.showNavigationBarLoading();
   },
 
   /**

@@ -2,32 +2,7 @@
 
 import { fetchFollowings } from '../../services/user';
 
-const followingTestData = [{
-  last: {},
-  name: "Masaki",
-  id: 11,
-  url: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIkb4JFA2mqldtIfUdIuL7GLJLf94uBdwtvAFAhWzjU77Auuxvfy4ibicByYMVelPKT04HcgWEQdVBg/132"
-}, {
-  last: {},
-  name: "芽生三月",
-  id: 10,
-  url: "https://wx.qlogo.cn/mmopen/vi_32/C6fI3RLRvzqnSOCHM2nSttNb8Po2eDuuOicficVFKPNVbOrjX5XzAkZibkSDDylgib5lzrF1pJBI4ZbmHcwiabfOIEQ/132"
-}, {
-  last: {},
-  name: "Masaki",
-  id: 11,
-  url: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIkb4JFA2mqldtIfUdIuL7GLJLf94uBdwtvAFAhWzjU77Auuxvfy4ibicByYMVelPKT04HcgWEQdVBg/132"
-}, {
-  last: {},
-  name: "芽生三月",
-  id: 10,
-  url: "https://wx.qlogo.cn/mmopen/vi_32/C6fI3RLRvzqnSOCHM2nSttNb8Po2eDuuOicficVFKPNVbOrjX5XzAkZibkSDDylgib5lzrF1pJBI4ZbmHcwiabfOIEQ/132"
-}, {
-  last: {},
-  name: "Masaki",
-  id: 11,
-  url: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIkb4JFA2mqldtIfUdIuL7GLJLf94uBdwtvAFAhWzjU77Auuxvfy4ibicByYMVelPKT04HcgWEQdVBg/132"
-}];
+const app = getApp();
 
 Page({
 
@@ -35,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    followings: followingTestData,
+    followings: null,
     currentPageIndex: 1,
     pageCount: 0,
     pullTip: ''
@@ -45,13 +20,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    !app.globalData.isSigned && app.doLogin();
+
     fetchFollowings({
       pageSize: 15,
       pageIndex: 1
     }).then(res => this.setData({
       followings: res.data.list,
       pageCount: res.data.pageCount
-    })).catch(err => console.error(err));
+    })).then(() => {
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+    }).catch(err => console.error(err));
+
+    wx.startPullDownRefresh();
+    wx.showNavigationBarLoading();
   },
 
   /**
@@ -94,6 +78,7 @@ Page({
    */
   onReachBottom: function () {
     console.log('bottom touched');
+    console.log(this.data);
 
     if (this.data.pageCount === this.data.currentPageIndex) {
       this.setData({pullTip: '我是有底线的'})
@@ -103,7 +88,7 @@ Page({
     this.setData({
       currentPageIndex: this.data.currentPageIndex + 1,
     }, () => {
-      fetchFollowings(getApp().globalData.token, {
+      fetchFollowings({
         pageSize: 15,
         pageIndex: this.data.currentPageIndex
       }).then(res => {

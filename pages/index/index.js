@@ -20,41 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.userLogin()
-      .then(res => {
-        app.globalData.userInfo = res.data.user;
-        app.globalData.token = res.data.token;
-        app.globalData.isSigned = true;
-        wx.hideLoading();
-      })
-      .then(() => {
-        wx.switchTab({
-          url: '../user/user'
-        });
-      })
-      .catch(err => {
-        console.error(err);
-        wx.hideLoading();
-        wx.showModal({
-          title: '登录失败',
-          content: err,
-          showCancel: false,
-          confirmText: '重新登录',
-          success: res => {
-            if (res.confirm) {
-              this.onLoad();
-            }
-          }
-        });
-        // wx.showToast({
-        //   title: err,
-        //   icon: 'none'
-        // })
-      })
-    wx.showLoading({
-      mask: true,
-      title: '登录中'
-    })
+    app.doLogin();
   },
 
   /**
