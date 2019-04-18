@@ -68,6 +68,8 @@ App({
           success: res => {
             if (res.confirm) {
               this.doLogin();
+            } else {
+              wx.navigateBack();
             }
           }
         });

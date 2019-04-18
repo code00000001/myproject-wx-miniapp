@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.doLogin();
+    !app.globalData.isSigned && app.doLogin();
   },
 
   /**
@@ -34,7 +34,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.globalData.isSigned)
+    
   },
 
   /**

@@ -1,5 +1,7 @@
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
 <view class='profile'>
-  <image src='{{ userinfo.url }}' mode='center'></image>
+  <image src='{{ userinfo.url }}' mode='aspectFill'></image>
   <text class='profile__name grey'>{{ userinfo.name }}</text>
   <text class='profile__lv lightgrey'>LV.{{ userinfo.level }}</text>
 </view>
@@ -25,7 +27,7 @@
     </view>
     <view class='navpad-item__pre'>
       <text class='lightgrey'>最近发布</text>
-      <text class='lightgrey'>昨天</text>
+      <text class='lightgrey'>{{ format.explainTimestamp(userinfo.publishedSections.lastOne.time) }}</text>
     </view>
   </view>
   <view class='navpad-item downforward' bindtap='handleNavpadClick' data-jumpto='../record/record'>
@@ -37,7 +39,7 @@
     </view>
     <view class='navpad-item__pre'>
       <text class='lightgrey'>最近记录</text>
-      <text class='lightgrey'>昨天</text>
+      <text class='lightgrey'>{{ format.explainTimestamp(userinfo.myMtl.lastOne.time) }}</text>
     </view>
   </view>
 </view>
