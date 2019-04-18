@@ -6,21 +6,21 @@
 
 ## Bugs
 
-### Detection of direction of divice
+### Detection of direction of device
 
 #### Symptoms
 
-wx.stopDeviceMotionListening (which used to stop detecting the change of direction of the divice) doesn't work on iOS
+wx.stopDeviceMotionListening (which used to stop detecting the change of direction of the device) doesn't work on iOS
 
 #### Cause
 
-Office doc says it's bug of minapp.
+Office doc says it's bug of minapp itself.
 
 #### 解决
 
-Our boss of products let us first detect which OS the user is using. If not iOS, continue to detect the change of diretion of the divice, otherwise ...233
+Our boss of products let us first detect which OS the user is using. If not iOS, continue to detect the change of diretion of the device, otherwise ...233
 
-Method that detects which the OS
+Method that detects which the OS is
 ```javascript
 const isIOS = () => {
   let result;
