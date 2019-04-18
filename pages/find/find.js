@@ -10,6 +10,7 @@ Page({
   data: {
     timer: null,
     src: null,
+    srcImage: null,
     isiOS: false,
     disabled: false,
     title:null,
@@ -81,11 +82,12 @@ Page({
   jump_camera: function(){
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['original'],
       sourceType: ['camera'],
       success: res => {
         this.setData({
-          src: res.tempFilePaths
+          src: res.tempFilePaths,
+          srcImage:res.tempFilePaths[0 ]
         }, () => {
           this.onShow();
         })
