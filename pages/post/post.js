@@ -1,5 +1,7 @@
 // pages/post/post.js
 
+import { fetchPosts } from '../../services/user';
+
 const postsTestData = [{
   name: '我是标题',
   readCount: 250,
@@ -49,13 +51,23 @@ Page({
    */
   data: {
     posts: postsTestData,
+    currentPageIndex: 1,
+    pageCount: 0,
+    pullTip: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    fetchPosts({
+      pageSize: 15,
+      pageIndex: 1
+    }).then(res => this.setData({
+      posts: res.data.list,
+      pageCount: res.data.pageCount
+    }))
+      .catch(err => console.error(err));
   },
 
   /**
@@ -98,6 +110,30 @@ Page({
    */
   onReachBottom: function () {
     console.log('Bottom touched');
+
+    if (this.data.pageCount === this.data.currentPageIndex) {
+      this.setData({pullTip: '我是有底线的'})
+      return false;
+    }
+
+    this.setData({
+      currentPageIndex: this.data.currentPageIndex + 1,
+    }, () => {
+      fetchPosts({
+        pageSize: 15,
+        pageIndex: this.data.currentPageIndex
+      }).then(res => {
+
+        wx.hideNavigationBarLoading();
+
+        this.setData({
+          posts: this.data.posts.concat(res.data.list)
+        });
+
+      }).catch(err => console.error(err));
+    })
+
+    wx.showNavigationBarLoading();
   },
 
   /**
