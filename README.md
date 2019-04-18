@@ -10,7 +10,7 @@
 
 #### Symptoms
 
-wx.stopDeviceMotionListening (which used to stop detecting the change of direction of the device) doesn't work on iOS
+`wx.stopDeviceMotionListening` (which used to stop detecting the change of direction of the device) doesn't work on iOS
 
 #### Cause
 
