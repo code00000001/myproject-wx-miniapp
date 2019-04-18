@@ -27,7 +27,6 @@ Page({
    */
   onLoad: function (options) {
     isIOS() && this.setData({isiOS: true});
-    console.log(typeof(uploadFind))
   },
 
   /**
@@ -80,14 +79,39 @@ Page({
   },
 
   jump_camera: function(){
+    wx.startDeviceMotionListening({
+      success: res => console.log('ready listening')
+    })
+
+    isIOS ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
+        console.log(res)
+    })
+    
+    wx.stopDeviceMotionListening({
+      success: res => console.log('stop listening')
+    })
     wx.chooseImage({
       count: 1,
       sizeType: ['original'],
       sourceType: ['camera'],
       success: res => {
+        const date = new Date().getTime()
+
+        wx.getLocation({
+          type: 'wgs84',
+          altitude: true,
+          success: res => {
+            const gps = `(${res.latitude},${res.longitude},${res.altitude})`
+            console.log(gps)
+            this.setData({
+              gps: gps
+            })
+          }
+        })
         this.setData({
+          createTime: date,
           src: res.tempFilePaths,
-          srcImage:res.tempFilePaths[0 ]
+          srcImage:res.tempFilePaths[0]
         }, () => {
           this.onShow();
         })

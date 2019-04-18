@@ -20,20 +20,20 @@
     "borderStyle": "white",
     "list": [
       {
-        "iconPath": "assets/icons/rhombus.png",
-        "selectedIconPath": "assets/icons/rhombus_active.png",
+        "iconPath": "assets/icons/view_1.png",
+        "selectedIconPath": "assets/icons/view_1_active.png",
         "pagePath": "pages/index/index",
         "text": "看点"
       },
       {
-        "iconPath": "assets/icons/camera.png",
-        "selectedIconPath": "assets/icons/camera_active.png",
+        "iconPath": "assets/icons/camera_1.png",
+        "selectedIconPath": "assets/icons/camera_1_active.png",
         "pagePath": "pages/find/find",
         "text": "发现"
       },
       {
-        "iconPath": "assets/icons/user.png",
-        "selectedIconPath": "assets/icons/user_active.png",
+        "iconPath": "assets/icons/user_1.png",
+        "selectedIconPath": "assets/icons/user_1_active.png",
         "pagePath": "pages/user/user",
         "text": "我的"
       }
@@ -43,5 +43,10 @@
     "request": 20000,
     "uploadFile": 30000,
     "downloadFile": 30000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口"
+    }
   }
 }

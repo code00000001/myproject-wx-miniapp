@@ -96,37 +96,9 @@ Page({
 
   },
 
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-
-  changeOne: function(){
-    const url = '../pageOne/pageOne';
-    route(url, 'navigateTo').then(res => {
-      console.log('success')
-    }).catch(res => {
-      console.log('fail')
-    })
-  },
-  changeTwo: function () {
-    const url = '../pageTwo/pageTwo';
-    route(url, 'navigateTo').then(res => {
-      console.log('success');
-    }).catch(res => {
-      console.log('fail')
-    })
-  },
-  changeThree: function () {
-    const url = '../pageThree/pageThree';
-    route(url, 'navigateTo').then(res => {
-      console.log('success');
-    }).catch(res => {
-      console.log('fail')
+  navgateToFeedback: function () {
+    wx.navigateTo({
+      url: '../feedback/feedback'
     })
   }
 })

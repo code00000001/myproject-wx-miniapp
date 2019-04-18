@@ -42,6 +42,6 @@
   </view>
 </view>
 <view class='footer'>
-  <text class='lightgrey'>用户反馈</text>
+  <text class='lightgrey' catchtap="navgateToFeedback">用户反馈</text>
 </view>
 

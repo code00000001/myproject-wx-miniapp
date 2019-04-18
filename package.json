@@ -4,7 +4,7 @@
   "description": "集视三维客户端(小程序)",
   "main": "app.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "babel-node test/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/Mivinci/convergency-3d#readme",
   "devDependencies": {
     "mockjs": "^1.0.1-beta3"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1"
   }
 }

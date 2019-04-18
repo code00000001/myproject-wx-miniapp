@@ -21,35 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    app.userLogin()
-      .then(res => {
-        app.globalData.userInfo = res.data.user;
-        app.globalData.token = res.data.token;
-        app.globalData.isSigned = true;
-        wx.hideLoading();
-      })
-      // 等待token获取完成后
-      .then(() => {
-        fetchRecordSrc().then(res => {
-          this.setData({
-            webviewSrc: res.data.url
-          })
-        }).catch(err => {
-          console.log(err)
-        })
-      })
-      .catch(err => {
-        console.error(err);
-        wx.showToast({
-          title: err,
-          icon: 'none'
-        })
-      })
-    wx.showLoading({
-      mask: true,
-      title: '登录中'
-    })
+    app.doLogin();
   },
 
   /**

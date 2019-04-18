@@ -14,6 +14,9 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
+const formatTimestamp = timestamp => formatTime(new Date(parseInt(timestamp)));
+
+export {
+  formatTime,
+  formatTimestamp
 }
