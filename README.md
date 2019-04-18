@@ -14,7 +14,7 @@
 
 #### Cause
 
-Official doc says it's bug of minapp itself.
+Official doc says it's a bug of minapp itself that has been there for centuries.
 
 #### 解决
 
