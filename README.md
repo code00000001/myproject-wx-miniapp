@@ -6,21 +6,21 @@
 
 ## Bugs
 
-### 设备方向监听问题
+### Detection of direction of divice
 
-#### 现象
+#### Symptoms
 
-wx.stopDeviceMotionListening (停止监听设备方向的变化) iOS上不能调用
+wx.stopDeviceMotionListening (which used to stop detecting the change of direction of the divice) doesn't work on iOS
 
-#### 原因
+#### Cause
 
-官方文档反馈上说的小程序的bug
+Office doc says it's bug of minapp.
 
 #### 解决
 
-按照产品大哥说的, 先判断当前是否是iOS系统, 不是就调用接口监听设备方向变化获取数据, 是就...233
+Our boss of products let us first detect which OS the user is using. If not iOS, continue to detect the change of diretion of the divice, otherwise ...233
 
-判断设备操作系统方法
+Method that detects which the OS
 ```javascript
 const isIOS = () => {
   let result;
