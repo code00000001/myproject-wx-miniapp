@@ -38,11 +38,11 @@ Page({
         wx.showModal({
           title: '登录失败',
           content: err,
+          showCancel: false,
+          confirmText: '重新登录',
           success: res => {
             if (res.confirm) {
               this.onLoad();
-            } else if (res.cancel) {
-              console.log('用户点击取消')
             }
           }
         });

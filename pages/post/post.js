@@ -50,7 +50,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    posts: postsTestData,
+    posts: null,
     currentPageIndex: 1,
     pageCount: 0,
     pullTip: ''
@@ -147,5 +147,5 @@ Page({
     wx.previewImage({
       urls: [event.currentTarget.dataset.src],
     });
-  }
+  },
 })
