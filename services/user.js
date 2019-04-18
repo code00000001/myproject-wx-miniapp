@@ -24,6 +24,7 @@ const login = ({
   });
 };
 
+
 const fetchFollowings = ({ pageSize, pageIndex }) => 
   request(`${baseRoute}/getFollowings`, {
     body: {
@@ -33,6 +34,7 @@ const fetchFollowings = ({ pageSize, pageIndex }) =>
       pageIndex
     }
   });
+
 
 const fetchPosts = ({ pageSize, pageIndex }) =>
   request(`${baseRoute}/publishedSections`, {
