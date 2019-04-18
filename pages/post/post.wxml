@@ -1,7 +1,9 @@
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
 <view class="column">
   <view 
     class="post-item shadow radius"
-    wx:for="{{ posts }}" wx:key="unique">
+    wx:if="{{ posts }}" wx:for="{{ posts }}" wx:key="unique">
     <image 
       src="{{ item.url }}" 
       mode="aspectFill"
@@ -10,7 +12,7 @@
       catchtap="previewImage"></image>
     <view class="post-item__main">
       <view class="post-item__title grey">{{ item.name }}</view>
-      <view class="post-item__date grey">{{ item.publishTime }}</view>
+      <view class="post-item__date grey">{{ format.formatTimestamp(item.publishTime) }}</view>
       <view class="post-item__count">
         <view class="post-item__count-item">
           <image src="../../assets/icons/view.png"></image>
