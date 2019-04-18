@@ -24,14 +24,26 @@ const login = ({
   });
 };
 
-const fetchFollowings = (token, { pageSize, pageIndex }) => 
+
+const fetchFollowings = ({ pageSize, pageIndex }) => 
   request(`${baseRoute}/getFollowings`, {
     body: {
-      token: token || getApp().globalData.token,
+      token: getApp().globalData.token,
       appId,
       pageSize,
       pageIndex
     }
   });
 
-export { login, fetchFollowings }
+
+const fetchPosts = ({ pageSize, pageIndex }) =>
+  request(`${baseRoute}/publishedSections`, {
+    body: {
+      token: getApp().globalData.token,
+      appId,
+      pageSize,
+      pageIndex
+    }
+  });
+
+export { login, fetchFollowings, fetchPosts };

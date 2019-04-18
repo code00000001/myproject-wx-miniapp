@@ -27,12 +27,29 @@ Page({
         app.globalData.isSigned = true;
         wx.hideLoading();
       })
+      .then(() => {
+        wx.switchTab({
+          url: '../user/user'
+        });
+      })
       .catch(err => {
         console.error(err);
-        wx.showToast({
-          title: err,
-          icon: 'none'
-        })
+        wx.hideLoading();
+        wx.showModal({
+          title: '登录失败',
+          content: err,
+          success: res => {
+            if (res.confirm) {
+              this.onLoad();
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        });
+        // wx.showToast({
+        //   title: err,
+        //   icon: 'none'
+        // })
       })
     wx.showLoading({
       mask: true,

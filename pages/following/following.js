@@ -38,23 +38,20 @@ Page({
     followings: followingTestData,
     currentPageIndex: 1,
     pageCount: 0,
-    pullTip: '上拉获取更多'
+    pullTip: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    fetchFollowings(getApp().globalData.token, {
+    fetchFollowings({
       pageSize: 15,
       pageIndex: 1
     }).then(res => this.setData({
       followings: res.data.list,
       pageCount: res.data.pageCount
-    }))
-      .catch(err => console.error(err));
-
-    console.log(this.data);
+    })).catch(err => console.error(err));
   },
 
   /**
@@ -110,7 +107,13 @@ Page({
         pageSize: 15,
         pageIndex: this.data.currentPageIndex
       }).then(res => {
-        console.log(res);
+
+        wx.hideNavigationBarLoading();
+
+        this.setData({
+          followings: this.data.followings.concat(res.data.list)
+        });
+
       }).catch(err => console.error(err));
     })
 
