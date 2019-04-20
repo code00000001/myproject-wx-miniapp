@@ -85,11 +85,11 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "通用webview页面",
 					"pathName": "pages/webview/webview",
 					"query": "webviewUrl=https://m.aminer.tumiv.com",
-					"scene": null
+					"scene": 1007
 				}
 			]
 		}

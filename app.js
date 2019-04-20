@@ -13,7 +13,7 @@ App({
   },
 
   onShow: function (options) {
-    this.globalData.scene = options.scene;
+    this.globalData.scene = options.scene; // 保存小程序进入方式
   },
 
   prepareLogin: function () {

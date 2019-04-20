@@ -1,0 +1,8 @@
+<template name="webview">
+  <web-view 
+    src="{{ url }}" 
+    bindmessage=""
+  ></web-view>
+
+  <!-- 页面的title默认为网页的title -->
+</template>

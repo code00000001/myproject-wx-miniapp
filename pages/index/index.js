@@ -24,13 +24,6 @@ Page({
   onLoad: function (options) {
 
     !app.globalData.isSigned && app.doLogin();
-    
-    // const { webviewSrc } = options;
-
-    // console.log(app.globalData.scene);
-
-    // If webviewSrc: this.data.webviewSrc = webviewSrc
-    // else: fetch the original webview url
 
     // if (webviewSrc) {
     //   this.setData({ webviewSrc });
@@ -87,10 +80,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
-    const { webviewUrl } = res;
+  onShareAppMessage: function (options) {
+    const { webViewUrl } = options;
     return {
-      path: `/pages/index/index?webviewSrc=${webviewUrl}`
+      path: `/pages/webview/webview?webviewUrl=${webViewUrl}`
     }
   }
 })

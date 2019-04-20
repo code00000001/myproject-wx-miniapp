@@ -11,7 +11,6 @@ Page({
    */
   data: {
     shareTitle: '我是自定义分享小题',
-    shareImagePath: '',
     webviewUrl: null,
   },
 
@@ -19,8 +18,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     const { webviewUrl } = options;
     this.setData({ webviewUrl });
+
   },
 
   /**
@@ -69,11 +70,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-    const { webviewUrl } = options;
+    const { webViewUrl } = options;
     return {
       title: this.data.shareTitle,
-      imageUrl: this.data.shareImagePath,
-      path: `/pages/webview/webview?webviewUrl=${webviewUrl}`
+      path: `/pages/webview/webview?webviewUrl=${webViewUrl}`
     }
   }
 })

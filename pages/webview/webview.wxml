@@ -1,5 +1,4 @@
 <!--pages/webview/webview.wxml-->
-<web-view src="{{ webviewUrl }}" bindmessage=""></web-view>
 
-<!-- 加载动画 -->
-<view class="vv">我是加载动画</view>
+<import src="../../common/templates/webview.wxml"></import>
+<template is="webview" data="{{ url: webviewUrl }}"></template>

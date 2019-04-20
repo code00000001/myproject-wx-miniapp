@@ -1,3 +1,6 @@
 <!--pages/index/index.wxml-->
 <text>pages/index/index.wxml</text>
-<web-view src="{{ webviewSrc }}" bindmessage=""></web-view>
+<!-- <web-view src="{{ webviewSrc }}" bindmessage=""></web-view> -->
+
+<import src="../../common/templates/webview.wxml"></import>
+<template is="webview" data="{{ url: 'https://tumiv.com' }}"></template>
