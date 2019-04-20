@@ -1,4 +1,6 @@
-import { fetchViewPointUrl } from "../../services/views";
+import {
+  fetchViewPointUrl
+} from "../../services/views";
 
 /**
  * Title: 看点页面
@@ -15,7 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    webviewSrc: null,
+    webviewUrl: null,
   },
 
   /**
@@ -25,14 +27,12 @@ Page({
 
     !app.globalData.isSigned && app.doLogin();
 
-    // if (webviewSrc) {
-    //   this.setData({ webviewSrc });
-    // } else {
-    //   fetchViewPointUrl().then(res => {
-    //     res.code === 200 &&
-    //     this.setData({ webviewSrc: res.url });
-    //   }).catch(err => console.error(err));
-    // }
+    // fetchViewPointUrl().then(res => {
+    //   res.code === 200 &&
+    //     this.setData({
+    //       webviewUrl: res.url
+    //     });
+    // }).catch(err => console.error(err));
   },
 
   /**
@@ -46,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -81,7 +81,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-    const { webViewUrl } = options;
+    const {
+      webViewUrl
+    } = options;
     return {
       path: `/pages/webview/webview?webviewUrl=${webViewUrl}`
     }
