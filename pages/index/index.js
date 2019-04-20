@@ -1,3 +1,5 @@
+import { fetchViewPointUrl } from "../../services/views";
+
 /**
  * Title: 看点页面
  * Author: xxx
@@ -13,14 +15,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    webviewSrc: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    !app.globalData.isSigned && app.doLogin();
+
+    // !app.globalData.isSigned && app.doLogin();
+    
+    const { webviewSrc } = options;
+
+    console.log(app.globalData.scene);
+
+    // If webviewSrc: this.data.webviewSrc = webviewSrc
+    // else: fetch the original webview url
+
+    if (webviewSrc) {
+      this.setData({ webviewSrc });
+    } else {
+      fetchViewPointUrl().then(res => {
+        res.code === 200 &&
+        this.setData({ webviewSrc: res.url });
+      }).catch(err => console.error(err));
+    }
   },
 
   /**
@@ -68,7 +87,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    const { webviewUrl } = res;
+    return {
+      path: `/pages/index/index?webviewSrc=${webviewUrl}`
+    }
   }
 })

@@ -93,7 +93,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '我是自定义小程序名称',
+      path: '/pages/index/index',
+      imageUrl: '/assets/icons/user_active.png'
+    }
   },
 
   navgateToFeedback: function () {

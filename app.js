@@ -11,6 +11,11 @@ App({
     wx.setStorageSync('logs', logs)
 
   },
+
+  onShow: function (options) {
+    this.globalData.scene = options.scene;
+  },
+
   prepareLogin: function () {
     return new Promise((resolve, reject) => {
       wx.getSetting({
@@ -44,6 +49,7 @@ App({
       })
     })
   },
+  
   doLogin: function () {
     this.prepareLogin()
       .then(res => {
@@ -82,6 +88,7 @@ App({
   globalData: {
     isSigned: false,
     userInfo: null,
-    token: null
+    token: null,
+    scene: null,
   }
 })
