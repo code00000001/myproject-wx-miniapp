@@ -7,7 +7,7 @@ const app = getApp();
 
 const userInfoTest = {
   name: '小白',
-  url: 'https://drscdn.500px.org/photo/302204265/q%3D80_m%3D2000/v2?webp=true&sig=25925bef24d12cd04266cad17707c6908b7eb3bb6d20ae3409b8162244901daa',
+  url: '../../assets/icons/user_1.png',
   level: 3,
   followings: {
     count: '--',
