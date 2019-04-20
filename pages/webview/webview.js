@@ -1,18 +1,26 @@
 // pages/webview/webview.js
+
+// Login Free !!!
+// Login Free !!!
+// Login Free !!!
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    shareTitle: '我是自定义分享小题',
+    shareImagePath: '',
+    webviewUrl: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const { webviewUrl } = options;
+    this.setData({ webviewUrl });
   },
 
   /**
@@ -60,7 +68,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (options) {
+    const { webviewUrl } = options;
+    return {
+      title: this.data.shareTitle,
+      imageUrl: this.data.shareImagePath,
+      path: `/pages/webview/webview?webviewUrl=${webviewUrl}`
+    }
   }
 })

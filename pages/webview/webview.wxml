@@ -1,2 +1,5 @@
 <!--pages/webview/webview.wxml-->
-<text>pages/webview/webview.wxml</text>
+<web-view src="{{ webviewUrl }}" bindmessage=""></web-view>
+
+<!-- 加载动画 -->
+<view class="vv">我是加载动画</view>

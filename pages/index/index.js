@@ -23,23 +23,23 @@ Page({
    */
   onLoad: function (options) {
 
-    // !app.globalData.isSigned && app.doLogin();
+    !app.globalData.isSigned && app.doLogin();
     
-    const { webviewSrc } = options;
+    // const { webviewSrc } = options;
 
-    console.log(app.globalData.scene);
+    // console.log(app.globalData.scene);
 
     // If webviewSrc: this.data.webviewSrc = webviewSrc
     // else: fetch the original webview url
 
-    if (webviewSrc) {
-      this.setData({ webviewSrc });
-    } else {
-      fetchViewPointUrl().then(res => {
-        res.code === 200 &&
-        this.setData({ webviewSrc: res.url });
-      }).catch(err => console.error(err));
-    }
+    // if (webviewSrc) {
+    //   this.setData({ webviewSrc });
+    // } else {
+    //   fetchViewPointUrl().then(res => {
+    //     res.code === 200 &&
+    //     this.setData({ webviewSrc: res.url });
+    //   }).catch(err => console.error(err));
+    // }
   },
 
   /**
