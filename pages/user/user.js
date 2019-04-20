@@ -6,7 +6,7 @@
 const app = getApp();
 
 const userInfoTest = {
-  name: '小白',
+  name: '游客',
   url: '../../assets/icons/avatar_default.png',
   level: 3,
   followings: {
