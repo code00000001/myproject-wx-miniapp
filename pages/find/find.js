@@ -2,6 +2,7 @@
 
 import { isIOS } from '../../utils/check';
 import { uploadFind } from '../../services/find';
+
 Page({
 
   /**
@@ -26,6 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(EXIF)
     isIOS() && this.setData({isiOS: true});
   },
 
@@ -79,17 +81,30 @@ Page({
   },
 
   jump_camera: function(){
-    wx.startDeviceMotionListening({
-      success: res => console.log('ready listening')
+    // wx.startDeviceMotionListening({
+    //   success: res => console.log('ready listening')
+    // })
+
+    // isIOS ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
+    //     console.log(res)
+    // })
+    
+    // wx.stopDeviceMotionListening({
+    //   success: res => console.log('stop listening')
+    // })
+    console.log('before listening')
+    wx.startGyroscope({
+      success: res => console.log('ready to listening'),
+      fail: res => console.log('fail to')
     })
 
-    isIOS ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
-        console.log(res)
+
+    console.log('start listening')
+    wx.onGyroscopeChange(res => {
+      console.log(res)
     })
-    
-    wx.stopDeviceMotionListening({
-      success: res => console.log('stop listening')
-    })
+
+
     wx.chooseImage({
       count: 1,
       sizeType: ['original'],
@@ -101,6 +116,10 @@ Page({
           type: 'wgs84',
           altitude: true,
           success: res => {
+            console.log('before stop listening')
+            wx.stopGyroscope({
+              success: res => console.log('success stop')
+            })
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
             console.log(gps)
             this.setData({
@@ -112,8 +131,6 @@ Page({
           createTime: date,
           src: res.tempFilePaths,
           srcImage:res.tempFilePaths[0]
-        }, () => {
-          this.onShow();
         })
       }
     })
@@ -148,7 +165,6 @@ Page({
 
 
   uploadFn: function() {
-    console.log(typeof(uploadFind))
     const { title, description, gps, posture, createTime } = this.data;
     uploadFind({
       filePath: this.data.src[0],
