@@ -26,7 +26,6 @@ Page({
    */
   onLoad: function (options) {
     isIOS() && this.setData({isiOS: true});
-    console.log(typeof(uploadFind))
   },
 
   /**
@@ -40,7 +39,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('on show', this.data.src);
+
   },
 
   /**
@@ -122,7 +121,6 @@ Page({
 
 
   uploadFn: function() {
-    console.log(typeof(uploadFind))
     const { title, description, gps, posture, createTime } = this.data;
     uploadFind({
       filePath: this.data.src[0],

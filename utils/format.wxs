@@ -23,7 +23,7 @@ var formatTimestamp = function(timestamp) {
 
 var explainTimestamp = function(timestamp) {
   var interval = parseInt(getDate().getTime()) - parseInt(timestamp);
-  console.log(interval);
+  // console.log(interval);
   // x * 1000 毫秒时间戳
   if (interval > 2592000 * 1000) {
     return '30天前';
