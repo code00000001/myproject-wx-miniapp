@@ -15,7 +15,7 @@ Page({
     isiOS: false,
     disabled: false,
     title:null,
-    content:null,
+    description:null,
     gps:null,
     posture:null,
     createTime:null,
@@ -139,8 +139,9 @@ Page({
     clearTimeout(this.data.timer);
     this.data.timer = setTimeout(() => {
       this.setData({
-        content: e.detail.value
+        description: e.detail.value
       })
+      console.log(this.data.description)
   },800)
   },
 
