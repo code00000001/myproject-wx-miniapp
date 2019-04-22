@@ -27,7 +27,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(EXIF)
     isIOS() && this.setData({isiOS: true});
   },
 
@@ -92,34 +91,16 @@ Page({
     // wx.stopDeviceMotionListening({
     //   success: res => console.log('stop listening')
     // })
-    console.log('before listening')
-    wx.startGyroscope({
-      success: res => console.log('ready to listening'),
-      fail: res => console.log('fail to')
-    })
-
-
-    console.log('start listening')
-    wx.onGyroscopeChange(res => {
-      console.log(res)
-    })
-
-
     wx.chooseImage({
       count: 1,
       sizeType: ['original'],
       sourceType: ['camera'],
       success: res => {
         const date = new Date().getTime()
-
         wx.getLocation({
           type: 'wgs84',
           altitude: true,
           success: res => {
-            console.log('before stop listening')
-            wx.stopGyroscope({
-              success: res => console.log('success stop')
-            })
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
             console.log(gps)
             this.setData({
@@ -165,6 +146,10 @@ Page({
 
 
   uploadFn: function() {
+    wx.showToast({
+      title: '上传中',
+      icon: 'loading',
+    })
     const { title, description, gps, posture, createTime } = this.data;
     uploadFind({
       filePath: this.data.src[0],
@@ -177,7 +162,26 @@ Page({
       description
     } 
     ).then(res => {
-      console.log(res)
+      wx.hideToast()
+      const Json = JSON.parse(res.data)
+      Json.code == 200 ? 
+      wx.showToast({
+        title: '成功',
+        icon: 'success',
+        duration: 1000,
+        success: res => {
+          setTimeout(res => {
+            wx.reLaunch({
+              url: './find'
+            })
+          },1000)
+        }
+      }) : 
+      wx.showToast({
+        title: '上传失败',
+        icon: 'none',
+        duration: 1000,
+      })
     })
     .catch(err => {
       console.log(err)
