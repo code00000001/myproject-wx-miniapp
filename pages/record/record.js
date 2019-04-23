@@ -1,5 +1,7 @@
 // pages/record/record.js
 
+import { fetchRecordPointUrl } from '../../services/user';
+
 const app = getApp();
 
 Page({
@@ -8,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    webviewUrl: null
   },
 
   /**
@@ -16,6 +18,13 @@ Page({
    */
   onLoad: function (options) {
     !app.globalData.isSigned && app.doLogin();
+
+    fetchRecordPointUrl()
+      .then(res => {
+        res.data.code === 200 &&
+        this.setData({ webviewUrl: res.data.url });
+      })
+      .catch(err => console.error(err));
   },
 
   /**

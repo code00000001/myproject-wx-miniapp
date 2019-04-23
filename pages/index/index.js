@@ -26,14 +26,14 @@ Page({
    */
   onLoad: function (options) {
 
-    !app.globalData.isSigned && app.doLogin();
-
-    // fetchViewPointUrl().then(res => {
-    //   res.code === 200 &&
-    //     this.setData({
-    //       webviewUrl: res.url
-    //     });
-    // }).catch(err => console.error(err));
+    !app.globalData.isSigned && app.doLogin(() => 
+      fetchViewPointUrl().then(res => {
+        res.data.code === 200 &&
+          this.setData({
+            webviewUrl: res.data.url
+          });
+      }).catch(err => console.error(err))
+    );
   },
 
   /**

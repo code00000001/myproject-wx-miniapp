@@ -50,7 +50,7 @@ App({
     })
   },
   
-  doLogin: function () {
+  doLogin: function (callback) {
     this.prepareLogin()
       .then(res => {
         this.globalData.userInfo = res.data.user;
@@ -59,6 +59,7 @@ App({
         wx.hideLoading();
       })
       .then(() => {
+        callback();
         wx.switchTab({
           url: '../user/user'
         });
@@ -83,7 +84,7 @@ App({
     wx.showLoading({
       mask: true,
       title: '登录中'
-    })
+    });
   },
   globalData: {
     isSigned: false,

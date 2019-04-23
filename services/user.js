@@ -6,6 +6,7 @@
 import { request } from '../utils/request';
 import { appId } from '../config/secret.config';
 import baseUrl from '../config/proxy.config';
+import { fetchViewPointUrl } from './views';
 
 const baseRoute = `${baseUrl}:2000/wap/user`;
 
@@ -46,4 +47,13 @@ const fetchPosts = ({ pageSize, pageIndex }) =>
     }
   });
 
-export { login, fetchFollowings, fetchPosts };
+
+const fetchRecordPointUrl = () =>
+  request(`${baseRoute}/getMtlManagePage`, {
+    body: {
+      appId,
+      token: getApp().globalData.token
+    }
+  });
+
+export { login, fetchFollowings, fetchPosts, fetchRecordPointUrl };
