@@ -30,11 +30,10 @@ Page({
       followings: res.data.list,
       pageCount: res.data.pageCount
     })).then(() => {
-        wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
     }).catch(err => console.error(err));
 
-    wx.startPullDownRefresh();
+    // wx.startPullDownRefresh();
     wx.showNavigationBarLoading();
   },
 

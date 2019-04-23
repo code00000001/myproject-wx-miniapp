@@ -8,6 +8,7 @@ import {
  * Date: xxxx-xx-xx xx:xx
  */
 
+import { fetchRecordSrc } from '../../services/views'
 
 const app = getApp();
 

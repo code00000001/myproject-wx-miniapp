@@ -2,6 +2,7 @@
 
 import { isIOS } from '../../utils/check';
 import { uploadFind } from '../../services/find';
+
 Page({
 
   /**
@@ -10,10 +11,11 @@ Page({
   data: {
     timer: null,
     src: null,
+    srcImage: null,
     isiOS: false,
     disabled: false,
     title:null,
-    content:null,
+    description:null,
     gps:null,
     posture:null,
     createTime:null,
@@ -78,15 +80,38 @@ Page({
   },
 
   jump_camera: function(){
+    // wx.startDeviceMotionListening({
+    //   success: res => console.log('ready listening')
+    // })
+
+    // isIOS ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
+    //     console.log(res)
+    // })
+    
+    // wx.stopDeviceMotionListening({
+    //   success: res => console.log('stop listening')
+    // })
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['original'],
       sourceType: ['camera'],
       success: res => {
+        const date = new Date().getTime()
+        wx.getLocation({
+          type: 'wgs84',
+          altitude: true,
+          success: res => {
+            const gps = `(${res.latitude},${res.longitude},${res.altitude})`
+            console.log(gps)
+            this.setData({
+              gps: gps
+            })
+          }
+        })
         this.setData({
-          src: res.tempFilePaths
-        }, () => {
-          this.onShow();
+          createTime: date,
+          src: res.tempFilePaths,
+          srcImage:res.tempFilePaths[0]
         })
       }
     })
@@ -114,13 +139,18 @@ Page({
     clearTimeout(this.data.timer);
     this.data.timer = setTimeout(() => {
       this.setData({
-        content: e.detail.value
+        description: e.detail.value
       })
+      console.log(this.data.description)
   },800)
   },
 
 
   uploadFn: function() {
+    wx.showToast({
+      title: '上传中',
+      icon: 'loading',
+    })
     const { title, description, gps, posture, createTime } = this.data;
     uploadFind({
       filePath: this.data.src[0],
@@ -133,7 +163,26 @@ Page({
       description
     } 
     ).then(res => {
-      console.log(res)
+      wx.hideToast()
+      const Json = JSON.parse(res.data)
+      Json.code == 200 ? 
+      wx.showToast({
+        title: '成功',
+        icon: 'success',
+        duration: 1000,
+        success: res => {
+          setTimeout(res => {
+            wx.reLaunch({
+              url: './find'
+            })
+          },1000)
+        }
+      }) : 
+      wx.showToast({
+        title: '上传失败',
+        icon: 'none',
+        duration: 1000,
+      })
     })
     .catch(err => {
       console.log(err)
