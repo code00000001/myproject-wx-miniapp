@@ -59,7 +59,7 @@ App({
         wx.hideLoading();
       })
       .then(() => {
-        callback();
+        callback;
         wx.switchTab({
           url: '../user/user'
         });

@@ -8,7 +8,9 @@ import {
  * Date: xxxx-xx-xx xx:xx
  */
 
-import { fetchRecordSrc } from '../../services/views'
+import {
+  fetchRecordSrc
+} from '../../services/views'
 
 const app = getApp();
 
@@ -26,7 +28,7 @@ Page({
    */
   onLoad: function (options) {
 
-    !app.globalData.isSigned && app.doLogin(() => 
+    !app.globalData.isSigned && app.doLogin(() =>
       fetchViewPointUrl().then(res => {
         res.data.code === 200 &&
           this.setData({
