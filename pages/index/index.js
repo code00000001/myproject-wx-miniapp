@@ -1,16 +1,10 @@
-import {
-  fetchViewPointUrl
-} from "../../services/views";
+import { fetchViewPointUrl } from "../../services/views";
 
 /**
  * Title: 看点页面
  * Author: xxx
  * Date: xxxx-xx-xx xx:xx
  */
-
-import {
-  fetchRecordSrc
-} from '../../services/views'
 
 const app = getApp();
 
@@ -28,14 +22,7 @@ Page({
    */
   onLoad: function (options) {
 
-    !app.globalData.isSigned && app.doLogin(() =>
-      fetchViewPointUrl().then(res => {
-        res.data.code === 200 &&
-          this.setData({
-            webviewUrl: res.data.url
-          });
-      }).catch(err => console.error(err))
-    );
+    !app.globalData.isSigned && app.doLogin();
   },
 
   /**
@@ -49,7 +36,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    fetchViewPointUrl().then(res => {
+      res.data.code === 200 ?
+        this.setData({
+          webviewUrl: res.data.url
+        })
+      : wx.showToast({ title: res.data.msg, icon: 'none' })
+    }).catch(err => wx.showToast({
+      title: err
+    }))
   },
 
   /**
