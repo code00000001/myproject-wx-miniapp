@@ -185,7 +185,12 @@ Page({
       })
     })
     .catch(err => {
-      console.log(err)
+      wx.hideToast()
+      wx.showToast({
+        title: '上传失败',
+        icon: 'none',
+        duration: 1000,
+      })
     })
   }
 
