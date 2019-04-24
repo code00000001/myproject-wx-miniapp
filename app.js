@@ -59,13 +59,13 @@ App({
         wx.hideLoading();
       })
       .then(() => {
-        callback;
+        typeof(callback) === 'function' && callback();
         wx.switchTab({
           url: '../user/user'
         });
       })
       .catch(err => {
-        console.error(err);
+        console.log(err)
         wx.hideLoading();
         wx.showModal({
           title: '登录失败',

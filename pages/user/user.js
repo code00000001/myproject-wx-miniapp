@@ -3,6 +3,7 @@
  * Author: xxx
  * Date: xxxx-xx-xx xx:xx
  */
+
 const app = getApp();
 
 const userInfoTest = {
@@ -36,6 +37,12 @@ Page({
     });
   },
 
+  handleManualLogin: function () {
+    !app.globalData.isSigned && app.doLogin(() => 
+      this.onShow()
+    );
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -54,6 +61,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('onshow')
     app.globalData.isSigned &&
     this.setData({
       userinfo: app.globalData.userInfo,

@@ -1,7 +1,10 @@
 <wxs module="format" src="../../utils/format.wxs"></wxs>
 
 <view class='profile'>
-  <image src='{{ userinfo.url }}' mode='aspectFill'></image>
+  <image
+    catchtap="handleManualLogin"
+    src='{{ userinfo.url }}' 
+    mode='aspectFill'></image>
   <text class='profile__name grey'>{{ userinfo.name }}</text>
   <text class='profile__lv lightgrey'>LV.{{ userinfo.level }}</text>
 </view>
