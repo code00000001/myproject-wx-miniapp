@@ -30,7 +30,8 @@ Page({
    */
   onLoad: function (options) {
     const authorized = wx.getStorageSync('authorized');
-    authorized === 'true' && this.setData({ isAuthorizationModalShown: false });
+    authorized === 'true' 
+    && this.setData({ isAuthorizationModalShown: false }, () => app._login())
   },
 
   /**
