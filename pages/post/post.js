@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function (options) {
 
-    !app.globalData.isSigned && app.doLogin();
+    !app.globalData.isSigned && app._login();
 
     fetchPosts({
       pageSize: 15,
@@ -77,7 +77,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('Bottom touched');
 
     if (this.data.pageCount === this.data.currentPageIndex) {
       this.setData({pullTip: '我是有底线的'})

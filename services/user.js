@@ -13,7 +13,6 @@ const baseRoute = `${baseUrl}:2000/wap/user`;
 // Login to get token and some userinfo 
 const login = ({ 
   code, 
-  appId, 
   signature, 
   rawData, 
   encryptedData, 

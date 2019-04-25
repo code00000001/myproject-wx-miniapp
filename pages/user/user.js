@@ -38,7 +38,7 @@ Page({
   },
 
   handleManualLogin: function () {
-    !app.globalData.isSigned && app.doLogin(() => 
+    !app.globalData.isSigned && app._login(() => 
       wx.reLaunch({ url: './user' })
     );
   },

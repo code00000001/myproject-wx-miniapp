@@ -2,8 +2,8 @@ import { fetchViewPointUrl } from "../../services/views";
 
 /**
  * Title: 看点页面
- * Author: xxx
- * Date: xxxx-xx-xx xx:xx
+ * Author: Mivinci
+ * Date: Connot remember
  */
 
 const app = getApp();
@@ -15,13 +15,22 @@ Page({
    */
   data: {
     webviewUrl: null,
+    isAuthorizationModalShown: true
+  },
+
+  handleModalBtnClick: function (event) {
+    this.setData({ isAuthorizationModalShown: false }, () => {
+      wx.setStorageSync('authorized', 'true');
+      app._login();
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    !app.globalData.isSigned && app.doLogin();
+    const authorized = wx.getStorageSync('authorized');
+    authorized === 'true' && this.setData({ isAuthorizationModalShown: false });
   },
 
   /**
