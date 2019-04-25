@@ -1,1 +1,45 @@
 /* pages/feedback/feedback.wxss */
+@import "../../common/styles/colors.wxss";
+@import "../../common/styles/layout.wxss";
+
+page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.fb {
+  width: 90%;
+  margin-top: 40rpx;
+}
+
+.fb-bar {
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.fb-bar image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.fb-bar image:last-child {
+  width: 60rpx;
+}
+
+.fb textarea {
+  width: 100%;
+  height: 800rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  line-height: 32rpx;
+}
+
+.fb .form-placeholder {
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: #c7c7cc;
+}
