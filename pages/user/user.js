@@ -1,7 +1,7 @@
 /**
  * Title: 我的页面
- * Author: xxx
- * Date: xxxx-xx-xx xx:xx
+ * Author: Mivinci
+ * Date: I cannot remember
  */
 
 const app = getApp();
@@ -39,7 +39,7 @@ Page({
 
   handleManualLogin: function () {
     !app.globalData.isSigned && app.doLogin(() => 
-      this.onShow()
+      wx.reLaunch({ url: './user' })
     );
   },
 
@@ -61,7 +61,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onshow')
     app.globalData.isSigned &&
     this.setData({
       userinfo: app.globalData.userInfo,
