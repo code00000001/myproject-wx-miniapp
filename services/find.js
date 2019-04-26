@@ -8,7 +8,7 @@ import { upload } from '../utils/request';
 import { appId } from '../config/secret.config';
 import baseUrl from '../config/proxy.config';
 
-const baseRoute = `${baseUrl}:8081/wap/user`;
+const baseRoute = `${baseUrl}:8082/wap/user`;
 
 const uploadFind = ({filePath, name}, { gps, posture, createTime, title, description }) => {
   return upload(`${baseRoute}/uploadMtl`, { filePath, name }, {

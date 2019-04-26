@@ -34,14 +34,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('on show', this.data.src);
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('on show', this.data.src);
+
   },
 
   /**
@@ -80,17 +80,12 @@ Page({
   },
 
   jump_camera: function(){
-    // wx.startDeviceMotionListening({
-    //   success: res => console.log('ready listening')
-    // })
+    let postureArr = [];
+    wx.startDeviceMotionListening()
 
-    // isIOS ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
-    //     console.log(res)
-    // })
-    
-    // wx.stopDeviceMotionListening({
-    //   success: res => console.log('stop listening')
-    // })
+    wx.onDeviceMotionChange(res => {
+        postureArr.push(res)
+    })
     wx.chooseImage({
       count: 1,
       sizeType: ['original'],
@@ -101,10 +96,13 @@ Page({
           type: 'wgs84',
           altitude: true,
           success: res => {
+            const length_posture = postureArr.length;
+            const posture = `(${postureArr[length_posture-1].alpha},${postureArr[length_posture-1].beta},${postureArr[length_posture-1].gamma})`
+            wx.stopDeviceMotionListening()
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
-            console.log(gps)
             this.setData({
-              gps: gps
+              gps: gps,
+              posture: posture
             })
           }
         })
