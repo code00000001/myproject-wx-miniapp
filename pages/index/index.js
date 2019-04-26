@@ -15,11 +15,11 @@ Page({
    */
   data: {
     webviewUrl: null,
-    isAuthorizationModalShown: true
+    isAuthModalShown: false
   },
 
-  handleModalBtnClick: function (event) {
-    this.setData({ isAuthorizationModalShown: false }, () => {
+  handleConfirm: function (event) {
+    this.setData({ isAuthModalShown: false }, () => {
       wx.setStorageSync('authorized', 'true');
       app._login();
     });
@@ -29,9 +29,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const authorized = wx.getStorageSync('authorized');
-    authorized === 'true' 
-    && this.setData({ isAuthorizationModalShown: false }, () => app._login())
+    wx.getStorageSync('authorized') === 'true'
+    ? !app.globalData.isSigned && app._login()
+    : this.setData({ isAuthModalShown: true });
   },
 
   /**
@@ -51,8 +51,8 @@ Page({
           webviewUrl: res.data.url
         })
       : wx.showToast({ title: res.data.msg, icon: 'none' })
-    }).catch(err => wx.showToast({
-      title: err
+    }).catch(err => 
+      wx.showToast({ title: '服务器走丢了~', icon: 'none'
     }))
   },
 

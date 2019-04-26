@@ -1,0 +1,9 @@
+<view class="wall column">
+  <view class="authmodal column radius">
+    <image src="../../assets/icons/cute.png"></image>
+    <text class="blue">需要您授权个人信息来登录哦!</text>
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="handleConfirm">确认授权</button>
+  </view>
+</view>

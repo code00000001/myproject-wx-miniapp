@@ -1,15 +1,21 @@
 //app.js
 
-import {
-  login
-} from './services/user.js';
+import { login } from './services/user.js';
 
 App({
   onLaunch: function () {
-    // 展示本地存储能力
+
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    wx.setStorageSync('logs', logs);
+
+    Promise.prototype.finally = function (callback) {
+      let P = this.constructor;
+      return this.then(
+        value => P.resolve(callback()).then(() => value),
+        reason => P.resolve(callback()).then(() => { throw reason })
+      );
+    };
 
   },
 
@@ -45,7 +51,7 @@ App({
                   this.userInfoReadyCallback(res)
                 }
               },
-              fail: err => console.log(err)
+              fail: err => wx.showToast({ title: '请先授权哦', icon: 'none' })
             })
         },
         fail: err => reject(err),
@@ -55,33 +61,28 @@ App({
 
   _login: function (callback) {
     this._prepareLogin()
-      .then(res => {
-        this.globalData.userInfo = res.data.user;
-        this.globalData.token = res.data.token;
+      .then(({ data }) => {
+        this.globalData.userInfo = data.user;
+        this.globalData.token = data.token;
         this.globalData.isSigned = true;
         wx.hideLoading();
-      })
-      .then(() => {
+      }).then(() => {
         typeof (callback) === 'function' && callback();
         wx.switchTab({
           url: '../user/user'
         });
-      })
-      .catch(err => {
+      }).catch(err => {
         wx.hideLoading();
         wx.showModal({
           title: '登录失败',
           content: err,
           showCancel: true,
           confirmText: '重新登录',
-          success: ({
-            confirm
-          }) => {
-            confirm ? this._login() :
-              wx.navigateBack()
+          success: ({ confirm }) => {
+            confirm ? this._login() : wx.navigateBack()
           }
         });
-      })
+      }).finally(() => wx.hideLoading());
     wx.showLoading({
       mask: true,
       title: '登录中'

@@ -7,7 +7,7 @@
 const app = getApp();
 
 const userInfoTest = {
-  name: '游客',
+  name: '游客 (点击头像登录)',
   url: '../../assets/icons/avatar_default.png',
   level: 3,
   followings: {
@@ -29,6 +29,7 @@ Page({
    */
   data: {
     userinfo: userInfoTest,
+    isAuthModalShown: false
   },
 
   handleNavpadClick: function (event) {
@@ -37,10 +38,20 @@ Page({
     });
   },
 
+  handleConfirm: function () {
+    this.setData({ isAuthModalShown: false }, () => 
+      app._login(() => {
+        wx.setStorageSync('authorized', 'true');
+        
+      }));
+  },
+
   handleManualLogin: function () {
-    !app.globalData.isSigned && app._login(() => 
+    wx.getStorageSync('authorized') === 'true'
+    ? !app.globalData.isSigned && app._login(() => 
       wx.reLaunch({ url: './user' })
-    );
+    )
+    : this.setData({ isAuthModalShown: true });
   },
 
   /**

@@ -1,5 +1,6 @@
 <wxs module="format" src="../../utils/format.wxs"></wxs>
 
+<authmodal wx:if="{{ isAuthModalShown }}" bind:confirm="handleConfirm"></authmodal>
 <view class='profile'>
   <image
     catchtap="handleManualLogin"

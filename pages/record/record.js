@@ -10,21 +10,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    webviewUrl: null
+    webviewUrl: null,
+    isAuthModalShown: false
+  },
+
+  handleConfirm: function () {
+    this.setData({ isAuthModalShown: false }, () => 
+      app._login(() => {
+        wx.setStorageSync('authorized', 'true');
+        wx.reLaunch({ url: './record' });
+      }));
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    !app.globalData.isSigned && app.doLogin();
-
-    fetchRecordPointUrl()
-      .then(res => {
-        res.data.code === 200 &&
-        this.setData({ webviewUrl: res.data.url });
-      })
-      .catch(err => console.error(err));
+    wx.getStorageSync('authorized') === 'true'
+    ? !app.globalData.isSigned && app._login(() => 
+      this.onShow()
+    )
+    : this.setData({ isAuthModalShown: true });
   },
 
   /**
@@ -38,7 +44,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    fetchRecordPointUrl()
+      .then(res => {
+        res.data.code === 200 &&
+        this.setData({ webviewUrl: res.data.url });
+      })
+      .catch(err => console.error(err));
   },
 
   /**

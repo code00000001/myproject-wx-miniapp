@@ -1,9 +1,4 @@
 <import src="../../common/templates/webview.wxml"></import>
-<template wx:if="{{ !isAuthorizationModalShown }}" is="webview" data="{{ url: webviewUrl }}"></template>
-<view class="wall column" wx:else>
-  <view class="authmodal column radius">
-    <image src="../../assets/icons/cute.png"></image>
-    <text class="blue">需要您授权个人信息来登录哦!</text>
-    <button open-type="getUserInfo" bindgetuserinfo="handleModalBtnClick">确认授权</button>
-  </view>
-</view>
+
+<authmodal wx:if="{{ isAuthModalShown }}" bind:confirm="handleConfirm"></authmodal>
+<template wx:else is="webview" data="{{ url: webviewUrl }}"></template>

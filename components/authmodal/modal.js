@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    onConfirm: { type: Function }
   },
 
   /**
@@ -18,6 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    handleConfirm (event) {
+      this.triggerEvent('confirm', {}, {});
+    } 
   }
 })
