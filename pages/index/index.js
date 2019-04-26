@@ -15,7 +15,7 @@ Page({
    */
   data: {
     webviewUrl: null,
-    isAuthModalShown: false
+    isAuthModalShown: true
   },
 
   handleConfirm: function (event) {
@@ -25,7 +25,7 @@ Page({
     });
   },
 
-  renderWebview: function () { 
+  fetchWebview: function () { 
     fetchViewPointUrl().then(res => {
       res.data.code === 200 ?
         this.setData({
@@ -56,10 +56,11 @@ Page({
    */
   onShow: function () {
     wx.getStorageSync('authorized') === 'true'
-    ? !app.globalData.isSigned 
-    ? app._login(() => this.renderWebview())
-    : this.renderWebview()
-    : this.setData({ isAuthModalShown: true });
+    && this.setData({ isAuthModalShown: false }, () => 
+      !app.globalData.isSigned 
+      ? app._login(() => this.fetchWebview())
+      : this.fetchWebview()
+    )
   },
 
   /**

@@ -5,17 +5,17 @@ import { login } from './services/user.js';
 App({
   onLaunch: function () {
 
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs);
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs);
 
-    // Promise.prototype.finally = function (callback) {
-    //   let P = this.constructor;
-    //   return this.then(
-    //     value => P.resolve(callback()).then(() => value),
-    //     reason => P.resolve(callback()).then(() => { throw reason })
-    //   );
-    // };
+    Promise.prototype.finally = function (callback) {
+      let P = this.constructor;
+      return this.then(
+        value => P.resolve(callback()).then(() => value),
+        reason => P.resolve(callback()).then(() => { throw reason })
+      );
+    };
 
   },
 

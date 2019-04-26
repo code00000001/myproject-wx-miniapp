@@ -1,6 +1,6 @@
 // pages/post/post.js
 
-import { fetchPosts } from '../../services/user';
+import { fetchPosts, fetchSectionPointUrl } from '../../services/user';
 
 const app = getApp();
 
@@ -16,6 +16,19 @@ Page({
     pullTip: ''
   },
 
+  handleItemClick: function (event) {
+    const { sectionid } = event.currentTarget.dataset;
+    fetchSectionPointUrl(sectionid)
+      .then(({ data }) => {
+        data.code === 200
+        ? wx.navigateTo({
+            url: `../webview/webview?webviewUrl=${encodeURIComponent(data.url)}`
+          })
+        : wx.showToast({ title: '获取失败', icon: 'none' })
+      })
+      .catch(() => wx.showToast({ title: '服务器走丢啦~', icon: 'none' }));
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -27,12 +40,12 @@ Page({
       pageSize: 15,
       pageIndex: 1
     }).then(res => this.setData({
-      posts: res.data.list,
-      pageCount: res.data.pageCount
+      posts: res.data.list || null,
+      pageCount: res.data.pageCount || 0
     })).then(() => {
       wx.stopPullDownRefresh();
       wx.hideNavigationBarLoading();
-    }).catch(err => console.error(err));
+    }).catch(() => wx.showToast({ title: '服务器走丢啦~', icon: 'none' }));
 
     wx.startPullDownRefresh();
     wx.showNavigationBarLoading();

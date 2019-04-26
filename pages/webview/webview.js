@@ -19,7 +19,8 @@ Page({
    */
   onLoad: function (options) {
 
-    const { webviewUrl } = options;
+    const webviewUrl = decodeURIComponent(options.webviewUrl);
+    
     this.setData({ webviewUrl });
 
   },

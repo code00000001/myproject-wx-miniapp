@@ -54,4 +54,20 @@ const fetchRecordPointUrl = () =>
     }
   });
 
-export { login, fetchFollowings, fetchPosts, fetchRecordPointUrl };
+
+const fetchSectionPointUrl = sectionId =>
+  request(`${baseRoute}/sectionPage`, {
+    body: {
+      appId,
+      token: getApp().globalData.token,
+      sectionId
+    }
+  });
+
+export { 
+  login, 
+  fetchPosts, 
+  fetchFollowings, 
+  fetchRecordPointUrl, 
+  fetchSectionPointUrl 
+};

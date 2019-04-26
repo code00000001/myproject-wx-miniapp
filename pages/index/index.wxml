@@ -1,4 +1,6 @@
 <import src="../../common/templates/webview.wxml"></import>
 
 <authmodal wx:if="{{ isAuthModalShown }}" bind:confirm="handleConfirm"></authmodal>
-<template wx:else is="webview" data="{{ url: webviewUrl }}"></template>
+<view wx:else>
+  <template is="webview" data="{{ url: webviewUrl }}"></template>
+</view>

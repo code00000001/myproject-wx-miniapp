@@ -11,36 +11,30 @@ Page({
    */
   data: {
     webviewUrl: null,
-    isAuthModalShown: false
+    isAuthModalShown: true
   },
 
   handleConfirm: function () {
-    this.setData({ isAuthModalShown: false }, () => 
-      app._login(() => {
+    this.setData({ isAuthModalShown: false }, () => {
         wx.setStorageSync('authorized', 'true');
-        wx.reLaunch({ url: './record' });
-      }));
+        app._login();
+    });
   },
 
   fetchWebview: function () {
-    console.log(2)
     fetchRecordPointUrl()
       .then(res => {
         res.data.code === 200 &&
         this.setData({ webviewUrl: res.data.url });
       })
-      .catch(err => console.error(err));
+      .catch(err => wx.showToast({ title: '服务端走丢啦~', icon: 'none' }));
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getStorageSync('authorized') === 'true'
-    ? !app.globalData.isSigned 
-    ? app._login(() => this.fetchWebview())
-    : this.fetchWebview()
-    : this.setData({ isAuthModalShown: true });
+    
   },
 
   /**
@@ -54,6 +48,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.getStorageSync('authorized') === 'true'
+    && this.setData({ isAuthModalShown: false }, () => 
+      !app.globalData.isSigned 
+      ? app._login(() => this.fetchWebview())
+      : this.fetchWebview()
+    )
   },
 
   /**
