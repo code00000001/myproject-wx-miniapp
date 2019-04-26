@@ -16,7 +16,7 @@
 
 Official doc says it's a bug of minapp itself that has been there for centuries.
 
-#### 解决
+#### Solvation
 
 Our boss of products let us first detect which OS the user is using. If not iOS, continue to detect the change of diretion of the device, otherwise ...233
 
