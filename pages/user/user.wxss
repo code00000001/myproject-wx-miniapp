@@ -50,10 +50,12 @@
 .navpad-item:first-child {
   border-radius: 0 40rpx 40rpx 0;
 }
+
 .navpad-item:nth-child(2) {
   margin: 0 12rpx;
   border-radius: 40rpx;
 }
+
 .navpad-item:last-child {
   border-radius: 40rpx 0 0 40rpx;
 }
@@ -90,32 +92,34 @@
 }
 
 .downforward {
-  animation: downward 0.8s  both;
+  animation: downward 0.8s both;
 }
 
 .upforward {
-  animation: upward 0.8s  both;
+  animation: upward 0.8s both;
 }
 
 
-@keyframes downward{
-0% {
-  transform: translateY(-50%);
-  opacity: 0;
-}
-100%{
-  transform: translateY(0%);
-  opacity: 1;
-}
+@keyframes downward {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
-@keyframes upward{
+@keyframes upward {
   0% {
     transform: translateY(50%);
     opacity: 0;
   }
-  100%{
+
+  100% {
     transform: translateY(0%);
     opacity: 1;
   }
-  }
+}
