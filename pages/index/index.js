@@ -25,13 +25,23 @@ Page({
     });
   },
 
+  renderWebview: function () { 
+    fetchViewPointUrl().then(res => {
+      res.data.code === 200 ?
+        this.setData({
+          webviewUrl: res.data.url
+        })
+      : wx.showToast({ title: res.data.msg, icon: 'none' })
+    }).catch(err => 
+      wx.showToast({ title: '服务器走丢了~', icon: 'none' })
+    )
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getStorageSync('authorized') === 'true'
-    ? !app.globalData.isSigned && app._login()
-    : this.setData({ isAuthModalShown: true });
+    
   },
 
   /**
@@ -45,15 +55,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    fetchViewPointUrl().then(res => {
-      res.data.code === 200 ?
-        this.setData({
-          webviewUrl: res.data.url
-        })
-      : wx.showToast({ title: res.data.msg, icon: 'none' })
-    }).catch(err => 
-      wx.showToast({ title: '服务器走丢了~', icon: 'none'
-    }))
+    wx.getStorageSync('authorized') === 'true'
+    ? !app.globalData.isSigned 
+    ? app._login(() => this.renderWebview())
+    : this.renderWebview()
+    : this.setData({ isAuthModalShown: true });
   },
 
   /**

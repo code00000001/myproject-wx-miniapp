@@ -9,13 +9,13 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
 
-    Promise.prototype.finally = function (callback) {
-      let P = this.constructor;
-      return this.then(
-        value => P.resolve(callback()).then(() => value),
-        reason => P.resolve(callback()).then(() => { throw reason })
-      );
-    };
+    // Promise.prototype.finally = function (callback) {
+    //   let P = this.constructor;
+    //   return this.then(
+    //     value => P.resolve(callback()).then(() => value),
+    //     reason => P.resolve(callback()).then(() => { throw reason })
+    //   );
+    // };
 
   },
 
@@ -82,7 +82,7 @@ App({
             confirm ? this._login() : wx.navigateBack()
           }
         });
-      }).finally(() => wx.hideLoading());
+      })
     wx.showLoading({
       mask: true,
       title: '登录中'

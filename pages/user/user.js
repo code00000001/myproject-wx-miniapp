@@ -42,7 +42,7 @@ Page({
     this.setData({ isAuthModalShown: false }, () => 
       app._login(() => {
         wx.setStorageSync('authorized', 'true');
-        
+        wx.reLaunch({ url: './user' });
       }));
   },
 

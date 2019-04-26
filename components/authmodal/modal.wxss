@@ -29,7 +29,7 @@ authmodal {
 
 .authmodal text {
   font-size: 27rpx;
-  padding: 0 66rpx;
+  padding: 0 72rpx;
   text-align: center;
 }
 
