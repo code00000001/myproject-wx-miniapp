@@ -18,13 +18,13 @@
   flex: 1 1 auto;
 }
 
-.flw-item__main__l__name {
+/* .flw-item__main__l__name {
 
 }
 
 .flw-item__tail {
   
-}
+} */
 
 .flw-item__tail text {
   font-size: 26rpx;
