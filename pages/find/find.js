@@ -82,8 +82,7 @@ Page({
   jump_camera: function(){
     let postureArr = [];
     wx.startDeviceMotionListening()
-
-    wx.onDeviceMotionChange(res => {
+    isIOS ? void(0) : wx.onDeviceMotionChange(res => {
         postureArr.push(res)
     })
     wx.chooseImage({
@@ -97,12 +96,16 @@ Page({
           altitude: true,
           success: res => {
             const length_posture = postureArr.length;
-            const posture = `(${postureArr[length_posture-1].alpha},${postureArr[length_posture-1].beta},${postureArr[length_posture-1].gamma})`
+            if(postureArr.length > 1){
+              const posture = `(${postureArr[length_posture-1].alpha},${postureArr[length_posture-1].beta},${postureArr[length_posture-1].gamma})`
+              this.setData({
+                posture: posture,
+              })
+            }
             wx.stopDeviceMotionListening()
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
             this.setData({
               gps: gps,
-              posture: posture
             })
           }
         })
@@ -139,7 +142,6 @@ Page({
       this.setData({
         description: e.detail.value
       })
-      console.log(this.data.description)
   },800)
   },
 
