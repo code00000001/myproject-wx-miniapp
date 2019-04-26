@@ -33,8 +33,4 @@
     </view>
   </view>
 </view>
-<view class="notice__null column" wx:else>
-  <text class="lightgrey">
-    您还未发布过哦~
-  </text>
-</view>
+<empty wx:else></empty>

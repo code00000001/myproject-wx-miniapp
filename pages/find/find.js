@@ -14,20 +14,20 @@ Page({
     srcImage: null,
     isiOS: false,
     disabled: false,
-    title:null,
-    description:null,
-    gps:null,
-    posture:null,
-    createTime:null,
-    x: wx.getSystemInfoSync().windowWidth*0.68,
-    y: wx.getSystemInfoSync().windowWidth*0.35
+    title: null,
+    description: null,
+    gps: null,
+    posture: null,
+    createTime: null,
+    x: wx.getSystemInfoSync().windowWidth * 0.68,
+    y: wx.getSystemInfoSync().windowWidth * 0.35
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    isIOS() && this.setData({isiOS: true});
+    isIOS() && this.setData({ isiOS: true });
   },
 
   /**

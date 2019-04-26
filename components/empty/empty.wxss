@@ -1,0 +1,4 @@
+/* components/empty/empty.wxss */
+@import "../../common/styles/layout.wxss";
+@import "../../common/styles/colors.wxss";
+

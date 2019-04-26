@@ -1,4 +1,4 @@
-<view class="column">
+<view wx:if="{{ followings }}" class="column">
   <view class="flw-item shadow radius" wx:for="{{ followings }}" wx:key="unique">
     <image src="{{ item.url }}"></image>
     <view class="flw-item__main row">
@@ -11,4 +11,5 @@
     </view>
   </view>
 </view>
+<empty wx:else></empty>
 <view class="flw-tip__bottom">{{ pullTip }}</view>

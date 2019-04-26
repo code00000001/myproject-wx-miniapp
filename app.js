@@ -76,11 +76,10 @@ App({
         wx.showModal({
           title: '登录失败',
           content: err,
-          showCancel: true,
+          cancelColor: '#BABABA',
           confirmText: '重新登录',
-          success: ({ confirm }) => {
-            confirm ? this._login() : wx.navigateBack()
-          }
+          confirmColor: '#8ECDA9',
+          success: ({ confirm }) => confirm ? this._login() : wx.navigateBack()
         });
       })
     wx.showLoading({

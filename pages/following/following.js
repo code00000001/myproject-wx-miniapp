@@ -26,9 +26,9 @@ Page({
     fetchFollowings({
       pageSize: 15,
       pageIndex: 1
-    }).then(res => this.setData({
-      followings: res.data.list,
-      pageCount: res.data.pageCount
+    }).then(({ data }) => this.setData({
+      followings: data.list.length > 0 ? data.list : null,
+      pageCount: data.pageCount || 0
     })).then(() => {
         wx.hideNavigationBarLoading();
     }).catch(err => console.error(err));
