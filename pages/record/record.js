@@ -22,14 +22,24 @@ Page({
       }));
   },
 
+  fetchWebview: function () {
+    console.log(2)
+    fetchRecordPointUrl()
+      .then(res => {
+        res.data.code === 200 &&
+        this.setData({ webviewUrl: res.data.url });
+      })
+      .catch(err => console.error(err));
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.getStorageSync('authorized') === 'true'
-    ? !app.globalData.isSigned && app._login(() => 
-      this.onShow()
-    )
+    ? !app.globalData.isSigned 
+    ? app._login(() => this.fetchWebview())
+    : this.fetchWebview()
     : this.setData({ isAuthModalShown: true });
   },
 
@@ -44,12 +54,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    fetchRecordPointUrl()
-      .then(res => {
-        res.data.code === 200 &&
-        this.setData({ webviewUrl: res.data.url });
-      })
-      .catch(err => console.error(err));
   },
 
   /**
