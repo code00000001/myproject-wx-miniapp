@@ -9,7 +9,7 @@ const app = getApp();
 const userInfoTest = {
   name: '游客 (点击头像登录)',
   url: '../../assets/icons/avatar_default.png',
-  level: 3,
+  level: '∞',
   followings: {
     count: '--',
     lastOne: {}

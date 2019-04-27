@@ -59,7 +59,7 @@ App({
     })
   },
 
-  _login: function (callback) {
+  _login: function (callback, cancelRetry) {
     this._prepareLogin()
       .then(({ data }) => {
         this.globalData.userInfo = data.user;
@@ -79,7 +79,11 @@ App({
           cancelColor: '#BABABA',
           confirmText: '重新登录',
           confirmColor: '#8ECDA9',
-          success: ({ confirm }) => confirm ? this._login() : wx.navigateBack()
+          success: ({ confirm }) => confirm 
+            ? this._login() 
+            : typeof(cancelRetry) === 'function'
+            ? cancelRetry() 
+            : wx.navigateBack()
         });
       })
     wx.showLoading({
