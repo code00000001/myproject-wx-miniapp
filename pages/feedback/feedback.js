@@ -24,7 +24,7 @@ Page({
       confirmColor: '#8ECDA9',
       cancelText: this.data.isBarClicked ? '手又滑了' : '手滑了',
       cancelColor: '#BABABA',
-      success: ({confirm}) => confirm && this.setData({ value: null }),
+      success: ({ confirm }) => confirm && this.setData({ value: null }),
       complete: () => this.setData({ isBarClicked: true })
     });
   },
@@ -38,7 +38,7 @@ Page({
       confirmColor: '#8ECDA9',
       cancelText: this.data.isBarClicked ? '手又滑了' : '手滑了',
       cancelColor: '#BABABA',
-      success: ({confirm}) => confirm && this._submit(),
+      success: ({ confirm }) => confirm && this._submit(),
       complete: () => this.setData({ isBarClicked: true })
     });
   },
@@ -47,7 +47,7 @@ Page({
     const { value } = this.data;
     sendFeedback(value)
       .then(({ data }) => data.code === 200 ?
-        wx.showToast({ title: data.msg})
+        wx.showToast({ title: data.msg, complete: () => setTimeout(() => wx.reLaunch({ url: './feedback' }), 1500)}) 
         : wx.showToast({ title: data.msg, icon: 'none' }))
       .catch(err => wx.showToast({ title: '提交失败', icon: 'none' }))
 
