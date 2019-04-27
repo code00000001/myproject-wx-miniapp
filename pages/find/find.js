@@ -1,4 +1,8 @@
-// pages/edit/edit.js
+/**
+ * Title: 编辑页面
+ * Author: 姚老师
+ * Date: NaN
+ */
 
 import { isIOS } from '../../utils/check';
 import { uploadFind } from '../../services/find';
@@ -81,17 +85,9 @@ Page({
   },
 
   jump_camera: function(){
-    // wx.startDeviceMotionListening({
-    //   success: res => console.log('ready listening')
-    // })
-
-    // isIOS ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
-    //     console.log(res)
-    // })
-    
-    // wx.stopDeviceMotionListening({
-    //   success: res => console.log('stop listening')
-    // })
+    let postureArr = [];
+    wx.startDeviceMotionListening()
+    isIOS() ? void(0) : wx.onDeviceMotionChange(res => postureArr.push(res))
     wx.chooseImage({
       count: 1,
       sizeType: ['original'],
@@ -102,11 +98,14 @@ Page({
           type: 'wgs84',
           altitude: true,
           success: res => {
+            const length_posture = postureArr.length;
+            if(postureArr.length > 1){
+              const posture = `(${postureArr[length_posture-1].alpha},${postureArr[length_posture-1].beta},${postureArr[length_posture-1].gamma})`
+              this.setData({ posture })
+            }
+            wx.stopDeviceMotionListening()
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
-            console.log(gps)
-            this.setData({
-              gps: gps
-            })
+            this.setData({ gps })
           }
         })
         this.setData({
@@ -126,32 +125,27 @@ Page({
     }
   },
 
-  getTitle: function(e){
+  getTitle: function(event){
     clearTimeout(this.data.timer);
     this.data.timer = setTimeout(() => {
       this.setData({
-        title: e.detail.value
+        title: event.detail.value
       })
   },800)
   },
 
 
-  getContent: function(e){
+  getContent: function(event){
     clearTimeout(this.data.timer);
     this.data.timer = setTimeout(() => {
       this.setData({
-        description: e.detail.value
+        description: event.detail.value
       })
-      console.log(this.data.description)
   },800)
   },
 
 
   uploadFn: function() {
-    wx.showToast({
-      title: '上传中',
-      icon: 'loading',
-    })
     const { title, description, gps, posture, createTime } = this.data;
     uploadFind({
       filePath: this.data.src[0],
@@ -164,36 +158,37 @@ Page({
       description
     } 
     ).then(res => {
-      wx.hideToast()
       const Json = JSON.parse(res.data)
       Json.code == 200 ? 
       wx.showToast({
         title: '成功',
         icon: 'success',
-        duration: 1000,
+        duration: 1500,
         success: res => {
           setTimeout(res => {
             wx.reLaunch({
               url: './find'
             })
-          },1000)
+          },1500)
         }
       }) : 
       wx.showToast({
         title: '上传失败',
         icon: 'none',
-        duration: 1000,
+        duration: 1500,
       })
     })
     .catch(err => {
-      wx.hideToast()
       wx.showToast({
         title: '上传失败',
         icon: 'none',
-        duration: 1000,
+        duration: 1500,
       })
     })
+
+    wx.showLoading({
+      title: '上传中',
+      mask: true
+    })
   }
-
-
 })
