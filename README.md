@@ -21,13 +21,14 @@
 ## Authors
 
 <details>
-<summary>展开查看</summary>
+<summary>View details</summary>
 <pre><code>
 ├── pages
 │   ├── find
 │   │   ├── Author: 姚老师
 </code></pre>
 </details>
+
 
 
 
