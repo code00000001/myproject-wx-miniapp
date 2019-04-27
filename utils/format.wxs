@@ -1,4 +1,6 @@
-
+// Fuck wxs!
+// Fuck wxs!
+// Fuck wxs!
 
 var formatTime = function(date) {
   var year = date.getFullYear(),
