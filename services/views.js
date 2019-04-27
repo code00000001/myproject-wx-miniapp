@@ -14,6 +14,6 @@ export const fetchViewPointUrl = () =>
   request(`${baseRoute}/viewPoint`, {
     body: {
       appId,
-      token: getApp().globalData.token
+      token: getApp().globalData.token,
     }
   });

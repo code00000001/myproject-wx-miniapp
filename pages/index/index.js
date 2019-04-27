@@ -26,12 +26,12 @@ Page({
   },
 
   fetchWebview: function () { 
-    fetchViewPointUrl().then(res => {
-      res.data.code === 200 ?
+    fetchViewPointUrl().then(({ data }) => {
+      data.code === 200 ?
         this.setData({
-          webviewUrl: res.data.url
+          webviewUrl: `${data.url}&t=${new Date().getTime()}`
         })
-      : wx.showToast({ title: res.data.msg, icon: 'none' })
+      : wx.showToast({ title: data.msg, icon: 'none' })
     }).catch(err => 
       wx.showToast({ title: '服务器走丢了~', icon: 'none' })
     )

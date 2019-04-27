@@ -23,9 +23,9 @@ Page({
 
   fetchWebview: function () {
     fetchRecordPointUrl()
-      .then(res => {
-        res.data.code === 200 &&
-        this.setData({ webviewUrl: res.data.url });
+      .then(({ data }) => {
+        data.code === 200 &&
+        this.setData({ webviewUrl: `${data.url}&t=${new Date().getTime()}` });
       })
       .catch(err => wx.showToast({ title: '服务端走丢啦~', icon: 'none' }));
   },

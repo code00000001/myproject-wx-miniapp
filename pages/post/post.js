@@ -22,7 +22,7 @@ Page({
       .then(({ data }) => {
         data.code === 200
         ? wx.navigateTo({
-            url: `../webview/webview?webviewUrl=${encodeURIComponent(data.url)}`
+            url: `../webview/webview?webviewUrl=${encodeURIComponent(data.url + '&t=' + new Date().getTime())}`
           })
         : wx.showToast({ title: '获取失败', icon: 'none' })
       })
