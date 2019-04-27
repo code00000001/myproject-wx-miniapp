@@ -3,6 +3,19 @@
 
 
 
+## Convention
+
+### Naming
+
+- camelCase  (Both functions and variables)
+- No using "e" as parameter of functions. Use `error/err` for errors, `event/evt` for events or you can use deconstruction assignment in ES6.
+
+### Coding Style
+
+- Try to "reduce" the code.
+
+
+
 
 ## Bugs
 
