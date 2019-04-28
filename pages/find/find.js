@@ -106,7 +106,7 @@ Page({
               this.setData({ posture })
             }
             wx.stopDeviceMotionListening()
-            const gps = `(${res.latitude},${res.longitude},${res.altitude})`
+            const gps = `(${Math.round(res.latitude)},${Math.round(res.longitude)},${Math.round(res.altitude)})`
             this.setData({ gps })
           }
         })
