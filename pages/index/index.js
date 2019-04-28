@@ -32,7 +32,7 @@ Page({
           webviewUrl: `${data.url}&t=${new Date().getTime()}`
         })
       : wx.showToast({ title: data.msg, icon: 'none' })
-    }).catch(err => 
+    }).catch(() => 
       wx.showToast({ title: '服务器走丢了~', icon: 'none' })
     )
   },

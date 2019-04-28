@@ -11,5 +11,5 @@
     </view>
   </view>
 </view>
-<empty wx:else></empty>
+<empty wx:else content="您还没有关注任何人哦~"></empty>
 <view class="flw-tip__bottom">{{ pullTip }}</view>

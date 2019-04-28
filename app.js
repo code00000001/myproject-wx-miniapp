@@ -5,10 +5,6 @@ import { login } from './services/user.js';
 App({
   onLaunch: function () {
 
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs);
-
     Promise.prototype.finally = function (callback) {
       let P = this.constructor;
       return this.then(
@@ -42,7 +38,7 @@ App({
 
                     login({ code, signature, rawData, encryptedData, iv })
                       .then(res => res.data.code === 200 ? resolve(res) : reject(res.data.msg))
-                      .catch(err => reject(err));
+                      .catch(err => reject(err.errMsg));
 
                   }
                 })
@@ -68,14 +64,13 @@ App({
         wx.hideLoading();
       }).then(() => {
         typeof (callback) === 'function' && callback();
-        wx.switchTab({
-          url: '../user/user'
-        });
+        wx.switchTab({ url: '../user/user' });
       }).catch(err => {
         wx.hideLoading();
+        console.log(err)
         wx.showModal({
           title: '登录失败',
-          content: err,
+          content: err || '服务器走丢了',
           cancelColor: '#BABABA',
           confirmText: '重新登录',
           confirmColor: '#8ECDA9',
@@ -86,10 +81,7 @@ App({
             : wx.navigateBack()
         });
       })
-    wx.showLoading({
-      mask: true,
-      title: '登录中'
-    });
+    wx.showLoading({ mask: true, title: '登录中' });
   },
   globalData: {
     authorized: false,

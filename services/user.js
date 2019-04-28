@@ -64,10 +64,20 @@ const fetchSectionPointUrl = sectionId =>
     }
   });
 
+
+const fetchLatestUserInfo = () => 
+  request(`${baseRoute}/uniteFollowingSectionMtl`, {
+    body: {
+      appId,
+      token: getApp().globalData.token
+    }
+  })
+
 export { 
   login, 
   fetchPosts, 
-  fetchFollowings, 
+  fetchFollowings,
+  fetchLatestUserInfo, 
   fetchRecordPointUrl, 
-  fetchSectionPointUrl 
+  fetchSectionPointUrl
 };

@@ -1,5 +1,3 @@
 <view class="empty column">
-  <text class="lightgrey">
-    您还未发布过哦~
-  </text>
+  <text class="lightgrey">{{ content }}</text>
 </view>

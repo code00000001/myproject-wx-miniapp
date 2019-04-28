@@ -33,4 +33,4 @@
     </view>
   </view>
 </view>
-<empty wx:else></empty>
+<empty wx:else content="您还没有发布过哦~"></empty>

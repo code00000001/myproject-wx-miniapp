@@ -158,8 +158,7 @@ Page({
       createTime,
       title,
       description
-    } 
-    ).then(res => {
+    }).then(res => {
       const Json = JSON.parse(res.data)
       Json.code == 200 ? 
       wx.showToast({
@@ -168,25 +167,18 @@ Page({
         duration: 1500,
         success: res => {
           setTimeout(res => {
-            wx.reLaunch({
-              url: './find'
-            })
-          },1500)
+            wx.reLaunch({ url: './find' })
+          }, 1500)
         }
       }) : 
+      wx.showToast({ title: '上传失败', icon: 'none', })
+    }).catch(err => {
       wx.showToast({
         title: '上传失败',
         icon: 'none',
         duration: 1500,
       })
-    })
-    .catch(err => {
-      wx.showToast({
-        title: '上传失败',
-        icon: 'none',
-        duration: 1500,
-      })
-    })
+    }).finally(() => wx.hideLoading());
     wx.showLoading();
   }
 })

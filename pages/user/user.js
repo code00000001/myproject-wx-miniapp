@@ -1,3 +1,5 @@
+import { fetchLatestUserInfo } from "../../services/user";
+
 /**
  * Title: 我的页面
  * Author: Mivinci
@@ -73,7 +75,9 @@ Page({
    */
   onShow: function () {
     app.globalData.isSigned &&
-    // fetchLatestUserInfo().then()
+    fetchLatestUserInfo()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
     this.setData({
       userinfo: app.globalData.userInfo,
     })

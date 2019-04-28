@@ -33,7 +33,6 @@ Page({
         wx.hideNavigationBarLoading();
     }).catch(err => console.error(err));
 
-    // wx.startPullDownRefresh();
     wx.showNavigationBarLoading();
   },
 
