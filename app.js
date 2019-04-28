@@ -67,7 +67,6 @@ App({
         wx.switchTab({ url: '../user/user' });
       }).catch(err => {
         wx.hideLoading();
-        console.log(err)
         wx.showModal({
           title: '登录失败',
           content: err || '服务器走丢了',
@@ -84,7 +83,6 @@ App({
     wx.showLoading({ mask: true, title: '登录中' });
   },
   globalData: {
-    authorized: false,
     isSigned: false,
     userInfo: null,
     token: null,

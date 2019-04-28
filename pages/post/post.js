@@ -29,11 +29,7 @@ Page({
       .catch(() => wx.showToast({ title: '服务器走丢啦~', icon: 'none' }));
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  _init: function () { 
     !app.globalData.isSigned && app._login();
 
     fetchPosts({
@@ -43,12 +39,17 @@ Page({
       posts: res.data.list || null,
       pageCount: res.data.pageCount || 0
     })).then(() => {
-      wx.stopPullDownRefresh();
       wx.hideNavigationBarLoading();
     }).catch(() => wx.showToast({ title: '服务器走丢啦~', icon: 'none' }));
 
-    wx.startPullDownRefresh();
     wx.showNavigationBarLoading();
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this._init();
   },
 
   /**
@@ -83,7 +84,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this._init();
   },
 
   /**

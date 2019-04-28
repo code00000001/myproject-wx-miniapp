@@ -56,6 +56,15 @@ Page({
     : this.setData({ isAuthModalShown: true });
   },
 
+  _reduceUserInfo: function (userInfo, followings, publishedSections, myMtl) {
+    return {
+      ...userInfo,
+      myMtl,
+      followings,
+      publishedSections
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -76,11 +85,15 @@ Page({
   onShow: function () {
     app.globalData.isSigned &&
     fetchLatestUserInfo()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-    this.setData({
-      userinfo: app.globalData.userInfo,
-    })
+      .then(({ data }) => 
+        this.setData({ 
+          userinfo: this._reduceUserInfo(
+            app.globalData.userInfo,
+            data.followings,
+            data.publishedSections,
+            data.myMtl
+        )}))
+      .catch(() => wx.showToast({ title: '信息更新失败', icon: 'none' }));
   },
 
   /**

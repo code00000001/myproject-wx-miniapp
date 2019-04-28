@@ -16,11 +16,7 @@ Page({
     pullTip: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  _init: function () {
     !app.globalData.isSigned && app._login();
 
     fetchFollowings({
@@ -34,6 +30,13 @@ Page({
     }).catch(err => console.error(err));
 
     wx.showNavigationBarLoading();
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this._init();
   },
 
   /**
@@ -68,7 +71,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this._init();
   },
 
   /**

@@ -29,7 +29,7 @@
         "iconPath": "assets/icons/camera_1.png",
         "selectedIconPath": "assets/icons/camera_1_active.png",
         "pagePath": "pages/find/find",
-        "text": "发现"
+        "text": "记录"
       },
       {
         "iconPath": "assets/icons/user_1.png",

@@ -159,6 +159,7 @@ Page({
       title,
       description
     }).then(res => {
+      wx.hideLoading()
       const Json = JSON.parse(res.data)
       Json.code == 200 ? 
       wx.showToast({
@@ -173,12 +174,13 @@ Page({
       }) : 
       wx.showToast({ title: '上传失败', icon: 'none', })
     }).catch(err => {
+      wx.hideLoading()
       wx.showToast({
         title: '上传失败',
         icon: 'none',
         duration: 1500,
       })
-    }).finally(() => wx.hideLoading());
-    wx.showLoading();
+    }).finally(() => wx.hideLoading())
+    wx.showLoading({ title: '上传中' })
   }
 })
