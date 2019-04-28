@@ -22,12 +22,19 @@ Page({
     fetchFollowings({
       pageSize: 15,
       pageIndex: 1
-    }).then(({ data }) => this.setData({
-      followings: data.list.length > 0 ? data.list : null,
-      pageCount: data.pageCount || 0
-    })).then(() => {
-        wx.hideNavigationBarLoading();
-    }).catch(err => console.error(err));
+    }).then(({ data }) => 
+      data.code === 200 
+      ? this.setData({
+        followings: data.list.length > 0 ? data.list : null,
+        pageCount: data.pageCount || 0
+      })
+      : wx.showToast({ title: data.msg, icon: 'none' })
+    )
+    .catch(err => console.error(err))
+    .finally(() => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+    });
 
     wx.showNavigationBarLoading();
   },

@@ -35,12 +35,19 @@ Page({
     fetchPosts({
       pageSize: 15,
       pageIndex: 1
-    }).then(res => this.setData({
-      posts: res.data.list || null,
-      pageCount: res.data.pageCount || 0
-    })).then(() => {
+    }).then(({ data }) => 
+      data.code === 200
+      ? this.setData({
+        posts: data.list || null,
+        pageCount: data.pageCount || 0
+      })
+      : wx.showToast({ title: data.msg, icon: 'none' })
+    )
+    .catch(() => wx.showToast({ title: '服务器走丢啦~', icon: 'none' }))
+    .finally(() => {
       wx.hideNavigationBarLoading();
-    }).catch(() => wx.showToast({ title: '服务器走丢啦~', icon: 'none' }));
+      wx.stopPullDownRefresh();
+    });
 
     wx.showNavigationBarLoading();
   },
