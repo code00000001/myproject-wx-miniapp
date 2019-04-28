@@ -147,10 +147,6 @@ Page({
 
 
   uploadFn: function() {
-    wx.showToast({
-      title: '上传中',
-      icon: 'loading',
-    })
     const { title, description, gps, posture, createTime } = this.data;
     uploadFind({
       filePath: this.data.src[0],
@@ -163,7 +159,6 @@ Page({
       description
     } 
     ).then(res => {
-      wx.hideToast()
       const Json = JSON.parse(res.data)
       Json.code == 200 ? 
       wx.showToast({
@@ -185,14 +180,12 @@ Page({
       })
     })
     .catch(err => {
-      wx.hideToast()
       wx.showToast({
         title: '上传失败',
         icon: 'none',
         duration: 1000,
       })
     })
+    wx.showLoading();
   }
-
-
 })
