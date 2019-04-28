@@ -47,7 +47,7 @@ Page({
     const { value } = this.data;
     sendFeedback(value)
       .then(({ data }) => data.code === 200 ?
-        wx.showToast({ title: data.msg, complete: () => setTimeout(() => wx.reLaunch({ url: './feedback' }), 1500)}) 
+        wx.showToast({ title: data.msg, complete: () => this.setData({ value: null })}) 
         : wx.showToast({ title: data.msg, icon: 'none' }))
       .catch(err => wx.showToast({ title: '提交失败', icon: 'none' }))
 
