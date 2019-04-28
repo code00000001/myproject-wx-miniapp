@@ -102,11 +102,11 @@ Page({
           success: res => {
             const length_posture = postureArr.length;
             if(postureArr.length > 1){
-              const posture = `(${postureArr[length_posture-1].alpha},${postureArr[length_posture-1].beta},${postureArr[length_posture-1].gamma})`
+              const posture = `(${Math.round(postureArr[length_posture-1].alpha)},${Math.round(postureArr[length_posture-1].beta)},${Math.round(postureArr[length_posture-1].gamma)})`
               this.setData({ posture })
             }
             wx.stopDeviceMotionListening()
-            const gps = `(${Math.round(res.latitude)},${Math.round(res.longitude)},${Math.round(res.altitude)})`
+            const gps = `(${res.latitude},${res.longitude},${res.altitude})`
             this.setData({ gps })
           }
         })
