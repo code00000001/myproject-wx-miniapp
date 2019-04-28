@@ -82,7 +82,7 @@ Page({
   jump_camera: function(){
     let postureArr = [];
     wx.startDeviceMotionListening()
-    isIOS ? void(0) : wx.onDeviceMotionChange(res => {
+    isIOS() ? console.log('isIOS') : wx.onDeviceMotionChange(res => {
         postureArr.push(res)
     })
     wx.chooseImage({
@@ -114,7 +114,7 @@ Page({
           src: res.tempFilePaths,
           srcImage:res.tempFilePaths[0]
         })
-      }
+      },
     })
   },
 
