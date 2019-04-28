@@ -4,13 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.5",
@@ -20,6 +21,8 @@
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,14 +41,14 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 8,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "看点页面",
 					"pathName": "pages/index/index",
 					"query": "",
-					"scene": null
+					"scene": 1007
 				},
 				{
 					"id": -1,
@@ -80,6 +83,26 @@
 					"name": "我的关注页面",
 					"pathName": "pages/following/following",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "通用webview页面",
+					"pathName": "pages/webview/webview",
+					"query": "webviewUrl=https://m.aminer.tumiv.com",
+					"scene": 1007
+				},
+				{
+					"id": -1,
+					"name": "反馈页面",
+					"pathName": "pages/feedback/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的记录页面",
+					"pathName": "pages/record/record",
 					"scene": null
 				}
 			]

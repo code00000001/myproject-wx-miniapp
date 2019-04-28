@@ -13,7 +13,6 @@ const baseRoute = `${baseUrl}:2000/wap/user`;
 // Login to get token and some userinfo 
 const login = ({ 
   code, 
-  appId, 
   signature, 
   rawData, 
   encryptedData, 
@@ -46,4 +45,29 @@ const fetchPosts = ({ pageSize, pageIndex }) =>
     }
   });
 
-export { login, fetchFollowings, fetchPosts };
+
+const fetchRecordPointUrl = () =>
+  request(`${baseRoute}/getMtlManagePage`, {
+    body: {
+      appId,
+      token: getApp().globalData.token
+    }
+  });
+
+
+const fetchSectionPointUrl = sectionId =>
+  request(`${baseRoute}/sectionPage`, {
+    body: {
+      appId,
+      token: getApp().globalData.token,
+      sectionId
+    }
+  });
+
+export { 
+  login, 
+  fetchPosts, 
+  fetchFollowings, 
+  fetchRecordPointUrl, 
+  fetchSectionPointUrl 
+};

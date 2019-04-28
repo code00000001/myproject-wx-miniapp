@@ -21,3 +21,11 @@
 .black {
   color: #373737;
 }
+
+.white {
+  color: #fff;
+}
+
+.blue {
+  color: #79b6d7;
+}

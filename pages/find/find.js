@@ -1,4 +1,8 @@
-// pages/edit/edit.js
+/**
+ * Title: 编辑页面
+ * Author: 姚老师
+ * Date: NaN
+ */
 
 import { isIOS } from '../../utils/check';
 import { uploadFind } from '../../services/find';
@@ -14,20 +18,21 @@ Page({
     srcImage: null,
     isiOS: false,
     disabled: false,
-    title:null,
-    description:null,
-    gps:null,
-    posture:null,
-    createTime:null,
-    x: wx.getSystemInfoSync().windowWidth*0.68,
-    y: wx.getSystemInfoSync().windowWidth*0.35
+    title: null,
+    description: null,
+    gps: null,
+    posture: null,
+    createTime: null,
+    x: wx.getSystemInfoSync().windowWidth * 0.68,
+    y: wx.getSystemInfoSync().windowWidth * 0.35
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    isIOS() && this.setData({isiOS: true});
+    wx.hideShareMenu();
+    isIOS() && this.setData({ isiOS: true });
   },
 
   /**
@@ -41,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -98,15 +103,11 @@ Page({
             const length_posture = postureArr.length;
             if(postureArr.length > 1){
               const posture = `(${postureArr[length_posture-1].alpha},${postureArr[length_posture-1].beta},${postureArr[length_posture-1].gamma})`
-              this.setData({
-                posture: posture,
-              })
+              this.setData({ posture })
             }
             wx.stopDeviceMotionListening()
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
-            this.setData({
-              gps: gps,
-            })
+            this.setData({ gps })
           }
         })
         this.setData({
@@ -126,21 +127,21 @@ Page({
     }
   },
 
-  getTitle: function(e){
+  getTitle: function(event){
     clearTimeout(this.data.timer);
     this.data.timer = setTimeout(() => {
       this.setData({
-        title: e.detail.value
+        title: event.detail.value
       })
   },800)
   },
 
 
-  getContent: function(e){
+  getContent: function(event){
     clearTimeout(this.data.timer);
     this.data.timer = setTimeout(() => {
       this.setData({
-        description: e.detail.value
+        description: event.detail.value
       })
   },800)
   },
@@ -164,26 +165,26 @@ Page({
       wx.showToast({
         title: '成功',
         icon: 'success',
-        duration: 1000,
+        duration: 1500,
         success: res => {
           setTimeout(res => {
             wx.reLaunch({
               url: './find'
             })
-          },1000)
+          },1500)
         }
       }) : 
       wx.showToast({
         title: '上传失败',
         icon: 'none',
-        duration: 1000,
+        duration: 1500,
       })
     })
     .catch(err => {
       wx.showToast({
         title: '上传失败',
         icon: 'none',
-        duration: 1000,
+        duration: 1500,
       })
     })
     wx.showLoading();

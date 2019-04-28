@@ -1,32 +1,36 @@
 <wxs module="format" src="../../utils/format.wxs"></wxs>
 
-<view class="column">
+<view wx:if="{{ posts }}" class="column">
   <view 
     class="post-item shadow radius"
-    wx:if="{{ posts }}" wx:for="{{ posts }}" wx:key="unique">
+    wx:for="{{ posts }}" wx:key="unique">
     <image 
       src="{{ item.url }}" 
       mode="aspectFill"
       lazy-load="true"
       data-src="{{ item.url }}"
       catchtap="previewImage"></image>
-    <view class="post-item__main">
+    <view
+      data-sectionId="{{ item.id }}"
+      catchtap="handleItemClick"
+      class="post-item__main">
       <view class="post-item__title grey">{{ item.name }}</view>
       <view class="post-item__date grey">{{ format.formatTimestamp(item.publishTime) }}</view>
       <view class="post-item__count">
         <view class="post-item__count-item">
           <image src="../../assets/icons/view.png"></image>
-          <text>{{ item.readCount }}</text>
+          <text>{{ item.readCount || 0 }}</text>
         </view>
         <view class="post-item__count-item">
           <image src="../../assets/icons/comment.png"></image>
-          <text>{{ item.commentCount }}</text>
+          <text>{{ item.commentCount || 0 }}</text>
         </view>
         <view class="post-item__count-item">
           <image src="../../assets/icons/like.png"></image>
-          <text>{{ item.wowCount }}</text>
+          <text>{{ item.wowCount || 0 }}</text>
         </view>
       </view>
     </view>
   </view>
 </view>
+<empty wx:else></empty>

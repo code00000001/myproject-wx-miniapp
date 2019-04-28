@@ -1,4 +1,6 @@
-
+// Fuck wxs!
+// Fuck wxs!
+// Fuck wxs!
 
 var formatTime = function(date) {
   var year = date.getFullYear(),
@@ -23,7 +25,8 @@ var formatTimestamp = function(timestamp) {
 
 var explainTimestamp = function(timestamp) {
   var interval = parseInt(getDate().getTime()) - parseInt(timestamp);
-  console.log(interval);
+  if (!timestamp) return '无';
+  // console.log(interval);
   // x * 1000 毫秒时间戳
   if (interval > 2592000 * 1000) {
     return '30天前';
@@ -31,14 +34,16 @@ var explainTimestamp = function(timestamp) {
     return '15天前';
   } else if (interval > 604800 * 1000) {
     return '一周前';
-  } else if (interval > 259200 * 1000) {
-    return '3天前';
-  } else if (interval > 172800 * 1000) {
-    return '2天前';
+  } else if (interval > 60 * 60 * 24 * 1000) {
+    return Math.floor(interval / 1000 / 60 / 60 / 24) + '天前';
   } else if (interval > 86400 * 1000) {
     return '昨天';
+  } else if (interval > 60 * 60 * 1000) {
+    return  Math.floor(interval / 1000 / 60 / 60) + '小时前';
+  } else if (interval > 60 * 1000) {
+    return Math.floor(interval / 1000 / 60) + '分钟前';
   } else {
-    return '无';
+    return Math.floor(interval / 1000) + '秒前';
   }
 }
 

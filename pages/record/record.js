@@ -1,5 +1,7 @@
 // pages/record/record.js
 
+import { fetchRecordPointUrl } from '../../services/user';
+
 const app = getApp();
 
 Page({
@@ -8,14 +10,31 @@ Page({
    * 页面的初始数据
    */
   data: {
+    webviewUrl: null,
+    isAuthModalShown: true
+  },
 
+  handleConfirm: function () {
+    this.setData({ isAuthModalShown: false }, () => {
+        wx.setStorageSync('authorized', 'true');
+        app._login();
+    });
+  },
+
+  fetchWebview: function () {
+    fetchRecordPointUrl()
+      .then(({ data }) => {
+        data.code === 200 &&
+        this.setData({ webviewUrl: `${data.url}&t=${new Date().getTime()}` });
+      })
+      .catch(err => wx.showToast({ title: '服务端走丢啦~', icon: 'none' }));
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    !app.globalData.isSigned && app.doLogin();
+    
   },
 
   /**
@@ -29,7 +48,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getStorageSync('authorized') === 'true'
+    && this.setData({ isAuthModalShown: false }, () => 
+      !app.globalData.isSigned 
+      ? app._login(() => this.fetchWebview())
+      : this.fetchWebview()
+    )
   },
 
   /**

@@ -1,10 +1,10 @@
+import { fetchViewPointUrl } from "../../services/views";
+
 /**
  * Title: 看点页面
- * Author: xxx
- * Date: xxxx-xx-xx xx:xx
+ * Author: Mivinci
+ * Date: Connot remember
  */
-
-import { fetchRecordSrc } from '../../services/views'
 
 const app = getApp();
 
@@ -14,14 +14,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    webviewSrc: null
+    webviewUrl: null,
+    isAuthModalShown: true
+  },
+
+  handleConfirm: function (event) {
+    this.setData({ isAuthModalShown: false }, () => {
+      wx.setStorageSync('authorized', 'true');
+      app._login();
+    });
+  },
+
+  fetchWebview: function () { 
+    fetchViewPointUrl().then(({ data }) => {
+      data.code === 200 ?
+        this.setData({
+          webviewUrl: `${data.url}&t=${new Date().getTime()}`
+        })
+      : wx.showToast({ title: data.msg, icon: 'none' })
+    }).catch(err => 
+      wx.showToast({ title: '服务器走丢了~', icon: 'none' })
+    )
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    !app.globalData.isSigned && app.doLogin();
+    
   },
 
   /**
@@ -35,7 +55,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    wx.getStorageSync('authorized') === 'true'
+    && this.setData({ isAuthModalShown: false }, () => 
+      !app.globalData.isSigned 
+      ? app._login(() => this.fetchWebview(), () => this.fetchWebview())
+      : this.fetchWebview()
+    )
   },
 
   /**
@@ -69,7 +94,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (options) {
+    const {
+      webViewUrl
+    } = options;
+    return {
+      path: `/pages/webview/webview?webviewUrl=${webViewUrl}`
+    }
   }
 })

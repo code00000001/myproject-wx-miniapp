@@ -1,26 +1,55 @@
-# convergency-3d
-集视三维客户端(小程序)
+# 游鱼崽旅行记录
+游鱼崽旅行记录客户端 (微信小程序)
+
+
+
+## Conventions
+
+### Naming
+
+- camelCase  (Both functions and variables)
+- No using "e" as parameter of functions. Use `error/err` for errors, `event/evt` for events or you can use deconstruction assignment in ES6.
+
+### Coding Style
+
+- Try to "reduce" the code.
+
+
+
+
+
+## Authors
+
+<details>
+<summary>View details</summary>
+<pre><code>
+├── pages
+│   ├── find
+│   │   ├── Author: 姚老师
+</code></pre>
+</details>
+
 
 
 
 
 ## Bugs
 
-### 设备方向监听问题
+### Detection of direction of device
 
-#### 现象
+#### Symptoms
 
-wx.stopDeviceMotionListening (停止监听设备方向的变化) iOS上不能调用
+`wx.stopDeviceMotionListening` (which's used to stop detecting the change of direction of the device) doesn't work on iOS
 
-#### 原因
+#### Cause
 
-官方文档反馈上说的小程序的bug
+Official doc says it's a bug of minapp itself that has been there for centuries.
 
-#### 解决
+#### Solvation
 
-按照产品大哥说的, 先判断当前是否是iOS系统, 不是就调用接口监听设备方向变化获取数据, 是就...233
+Our boss of products let us first detect which OS the user is using. If not iOS, continue to detect the change of diretion of the device, otherwise ...233
 
-判断设备操作系统方法
+Method that detects which the OS is
 ```javascript
 const isIOS = () => {
   let result;

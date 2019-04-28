@@ -1,2 +1,21 @@
 <!--pages/feedback/feedback.wxml-->
-<text>pages/feedback/feedback.wxml</text>
+
+<view class="fb shadow column radius">
+  <view class="fb-bar row">
+    <image 
+      catchtap="handleClearText"
+      class="x" src="../../assets/icons/x.png"></image>
+    <image 
+      catchtap="handleConfirm"
+      class="correct" src="../../assets/icons/correct.png"></image>
+  </view>
+  <textarea 
+    auto-focus
+    maxlength="500"
+    class="black"
+    value="{{ value }}"
+    bindinput="handleTextOnChange"
+    placeholder="请输入反馈内容"
+    placeholder-class="form-placeholder"
+  ></textarea>
+</view>

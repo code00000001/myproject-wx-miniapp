@@ -1,0 +1,4 @@
+<!--pages/webview/webview.wxml-->
+
+<import src="../../common/templates/webview.wxml"></import>
+<template is="webview" data="{{ url: webviewUrl }}"></template>

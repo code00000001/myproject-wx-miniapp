@@ -6,5 +6,14 @@
 
 import { request }  from '../utils/request.js';
 import baseUrl from '../config/proxy.config';
+import { appId } from '../config/secret.config';
 
-const baseRoute = `${baseRoute}:2000`;
+const baseRoute = `${baseUrl}:2000/wap/user`;
+
+export const fetchViewPointUrl = () => 
+  request(`${baseRoute}/viewPoint`, {
+    body: {
+      appId,
+      token: getApp().globalData.token,
+    }
+  });

@@ -1,6 +1,7 @@
 @import "../../common/styles/colors.wxss";
 @import "../../common/styles/layout.wxss";
 
+
 .post-item {
   display: flex;
   width: 90%;

@@ -1,14 +1,15 @@
 /**
  * Title: 我的页面
- * Author: xxx
- * Date: xxxx-xx-xx xx:xx
+ * Author: Mivinci
+ * Date: I cannot remember
  */
+
 const app = getApp();
 
 const userInfoTest = {
-  name: '小白',
-  url: '../../assets/icons/user_1.png',
-  level: 3,
+  name: '游客 (点击头像登录)',
+  url: '../../assets/icons/avatar_default.png',
+  level: '∞',
   followings: {
     count: '--',
     lastOne: {}
@@ -28,6 +29,7 @@ Page({
    */
   data: {
     userinfo: userInfoTest,
+    isAuthModalShown: false
   },
 
   handleNavpadClick: function (event) {
@@ -36,11 +38,27 @@ Page({
     });
   },
 
+  handleConfirm: function () {
+    this.setData({ isAuthModalShown: false }, () => 
+      app._login(() => {
+        wx.setStorageSync('authorized', 'true');
+        wx.reLaunch({ url: './user' });
+      }));
+  },
+
+  handleManualLogin: function () {
+    wx.getStorageSync('authorized') === 'true'
+    ? !app.globalData.isSigned && app._login(() => 
+      wx.reLaunch({ url: './user' })
+    )
+    : this.setData({ isAuthModalShown: true });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    wx.hideShareMenu();
   },
 
   /**
@@ -54,8 +72,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.globalData);
     app.globalData.isSigned &&
+    // fetchLatestUserInfo().then()
     this.setData({
       userinfo: app.globalData.userInfo,
     })
@@ -93,7 +111,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '我是自定义小程序名称',
+      path: '/pages/index/index',
+      imageUrl: '/assets/icons/user_active.png'
+    }
   },
 
   navgateToFeedback: function () {
