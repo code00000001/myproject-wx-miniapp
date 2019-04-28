@@ -158,8 +158,7 @@ Page({
       createTime,
       title,
       description
-    } 
-    ).then(res => {
+    }).then(res => {
       const Json = JSON.parse(res.data)
       Json.code == 200 ? 
       wx.showToast({
@@ -187,6 +186,6 @@ Page({
         duration: 1500,
       })
     })
-    wx.showLoading();
+    wx.showLoading({ title: '上传中' });
   }
 })
