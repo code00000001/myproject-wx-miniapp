@@ -115,6 +115,8 @@ Page({
           createTime: date,
           src: res.tempFilePaths,
           srcImage:res.tempFilePaths[0]
+        },() => {
+          this.onShow()
         })
       },
     })

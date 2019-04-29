@@ -4,7 +4,7 @@
     <movable-view x="{{ x }}" y="{{ y }}" direction="all" inertia:true class="movable-view" catchtap='jump_camera'>
       <image class="moveIcon" src='../../assets/icons/cameraIcon.png'></image>
     </movable-view>
-    <image src="{{ srcImage }}" catchtap="preview" class="edit_editImage" mode="aspectFill"></image>
+    <image src="{{ srcImage }}" catchtap="preview" class="edit_editImage"></image>
   </movable-area>
   <view class="edit-form">
     <view class="edit-form-item">

@@ -70,14 +70,13 @@ page{
   background-color: #fff;
   border-radius: 30rpx;
 }
+
 .edit_editImage{
   height: 450rpx;
   width: 700rpx;
   border-radius: 30rpx;
   box-shadow: 0rpx 5rpx 15rpx rgba(0, 0, 0, 0.2);
 }
-
-
 
 .content_choice{
   height: 100rpx;
