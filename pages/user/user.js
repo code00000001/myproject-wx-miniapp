@@ -1,5 +1,4 @@
 import { fetchLatestUserInfo } from "../../services/user";
-import { isAuthorized } from "../../utils/check";
 
 /**
  * Title: 我的页面
@@ -41,16 +40,16 @@ Page({
     });
   },
 
-  handleConfirm: function () {
+  handleConfirm: function ({ detail }) {
     this.setData({ isAuthModalShown: false }, () => 
       app._login(() => {
-        wx.setStorageSync('authorized', 'true');
+        detail.userInfo && wx.setStorageSync('authorized', 'true');
         wx.reLaunch({ url: './user' });
       }));
   },
 
   handleManualLogin: function () {
-    isAuthorized()
+    wx.getStorageSync('authorized') === 'true'
     ? !app.globalData.isSigned && app._login(() => 
       wx.reLaunch({ url: './user' })
     )

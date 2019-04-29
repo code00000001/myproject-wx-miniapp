@@ -19,8 +19,8 @@ Component({
    */
   methods: {
     handleConfirm (event) {
-      console.log(event)
-      this.triggerEvent('confirm', {}, {});
+      const userInfo = event.detail.userInfo;
+      this.triggerEvent('confirm', { userInfo }, {});
     } 
   }
 })

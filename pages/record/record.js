@@ -15,10 +15,10 @@ Page({
     isAuthModalShown: true
   },
 
-  handleConfirm: function () {
+  handleConfirm: function ({ detail }) {
     this.setData({ isAuthModalShown: false }, () => {
-        wx.setStorageSync('authorized', 'true');
-        app._login();
+      detail.userInfo && wx.setStorageSync('authorized', 'true');
+      app._login();
     });
   },
 
@@ -49,7 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    isAuthorized()
+    wx.getStorageSync('authorized') === 'true'
     && this.setData({ isAuthModalShown: false }, () => 
       ! app.globalData.isSigned 
       ? app._login(() => this.fetchWebview())

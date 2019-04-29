@@ -5,6 +5,7 @@ import { login } from './services/user.js';
 App({
   onLaunch: function () {
 
+    // 恶心的小程序 Promise 没有 finally
     Promise.prototype.finally = function (callback) {
       let P = this.constructor;
       return this.then(
@@ -13,8 +14,11 @@ App({
       );
     };
 
-    wx.clearStorageSync();
+    if (__wxConfig.envVersion === 'trial'
+        || __wxConfig.envVersion === 'develop'
+    ) { wx.clearStorageSync() }
 
+    // For God's sake
     wx.getLocation({
       type: 'wgs84',
       altitude: false,

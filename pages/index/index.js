@@ -18,9 +18,9 @@ Page({
     isAuthModalShown: true
   },
 
-  handleConfirm: function (event) {
+  handleConfirm: function ({ detail }) {
     this.setData({ isAuthModalShown: false }, () => {
-      wx.setStorageSync('authorized', 'true');
+      detail.userInfo && wx.setStorageSync('authorized', 'true');
       app._login();
     });
   },
