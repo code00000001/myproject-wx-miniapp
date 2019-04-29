@@ -31,10 +31,8 @@ Page({
         this.setData({
           webviewUrl: `${data.url}&t=${new Date().getTime()}`
         })
-      : wx.showToast({ title: data.msg, icon: 'none' })
-    }).catch(() => 
-      wx.showToast({ title: '服务器走丢了~', icon: 'none' })
-    )
+      : wx.showToast({ title: data.msg, icon: 'none', image: '/assets/icons/unauthorized.png', duration: 2000 })
+    }).catch(() => wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 }))
   },
 
   /**

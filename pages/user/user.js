@@ -1,4 +1,5 @@
 import { fetchLatestUserInfo } from "../../services/user";
+import { isAuthorized } from "../../utils/check";
 
 /**
  * Title: 我的页面
@@ -49,7 +50,7 @@ Page({
   },
 
   handleManualLogin: function () {
-    wx.getStorageSync('authorized') === 'true'
+    isAuthorized()
     ? !app.globalData.isSigned && app._login(() => 
       wx.reLaunch({ url: './user' })
     )

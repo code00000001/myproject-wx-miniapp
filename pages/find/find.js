@@ -108,7 +108,8 @@ Page({
             wx.stopDeviceMotionListening()
             const gps = `(${res.latitude},${res.longitude},${res.altitude})`
             this.setData({ gps })
-          }
+          },
+          fail: err => console.log(err)
         })
         this.setData({
           createTime: date,
@@ -164,21 +165,17 @@ Page({
       wx.showToast({
         title: '成功',
         icon: 'success',
-        duration: 1500,
+        duration: 2000,
         success: res => {
           setTimeout(res => {
             wx.reLaunch({ url: './find' })
-          }, 1500)
+          }, 1000)
         }
       }) : 
-      wx.showToast({ title: '上传失败', icon: 'none', })
-    }).catch(err => {
+      wx.showToast({ title: '上传失败', icon: 'none', image: '/assets/icons/unauthorized.png', duration: 2000 })
+    }).catch(() => {
       wx.hideLoading()
-      wx.showToast({
-        title: '上传失败',
-        icon: 'none',
-        duration: 1500,
-      })
+      wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 })
     }).finally(() => wx.hideLoading())
     wx.showLoading({ title: '上传中' })
   }

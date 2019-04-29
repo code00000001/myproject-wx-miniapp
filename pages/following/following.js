@@ -28,9 +28,9 @@ Page({
         followings: data.list.length > 0 ? data.list : null,
         pageCount: data.pageCount || 0
       })
-      : wx.showToast({ title: data.msg, icon: 'none' })
+      : wx.showToast({ title: data.msg, icon: 'none', image: '/assets/icons/unauthorized.png', duration: 2000 })
     )
-    .catch(err => console.error(err))
+    .catch(err => wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 }))
     .finally(() => {
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();

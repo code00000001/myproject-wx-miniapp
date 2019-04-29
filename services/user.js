@@ -36,7 +36,7 @@ const fetchFollowings = ({ pageSize, pageIndex }) =>
 
 
 const fetchPosts = ({ pageSize, pageIndex }) =>
-  request(`${baseRoute}/publishedSections`, {
+  request(`${baseUrl}:8082/wap/user/publishedSections`, {
     body: {
       token: getApp().globalData.token,
       appId,

@@ -1,6 +1,7 @@
 // pages/record/record.js
 
 import { fetchRecordPointUrl } from '../../services/user';
+import { isAuthorized } from '../../utils/check';
 
 const app = getApp();
 
@@ -27,7 +28,7 @@ Page({
         data.code === 200 &&
         this.setData({ webviewUrl: `${data.url}&t=${new Date().getTime()}` });
       })
-      .catch(err => wx.showToast({ title: '服务端走丢啦~', icon: 'none' }));
+      .catch(err => wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 }));
   },
 
   /**
@@ -48,9 +49,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getStorageSync('authorized') === 'true'
+    isAuthorized()
     && this.setData({ isAuthModalShown: false }, () => 
-      !app.globalData.isSigned 
+      ! app.globalData.isSigned 
       ? app._login(() => this.fetchWebview())
       : this.fetchWebview()
     )

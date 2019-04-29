@@ -48,8 +48,8 @@ Page({
     sendFeedback(value)
       .then(({ data }) => data.code === 200 ?
         wx.showToast({ title: data.msg, complete: () => this.setData({ value: null })}) 
-        : wx.showToast({ title: data.msg, icon: 'none' }))
-      .catch(err => wx.showToast({ title: '提交失败', icon: 'none' }))
+        : wx.showToast({ title: data.msg, icon: 'none', image: '/assets/icons/unauthorized.png', duration: 2000 })
+      .catch(err => wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 })))
 
     wx.showLoading({ title: '提交中' });
   },

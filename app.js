@@ -13,6 +13,15 @@ App({
       );
     };
 
+    wx.clearStorageSync();
+
+    wx.getLocation({
+      type: 'wgs84',
+      altitude: false,
+      success: res => console.log(res),
+      fail: err => console.log(err)
+    });
+
   },
 
   onShow: function (options) {
@@ -23,6 +32,7 @@ App({
     return new Promise((resolve, reject) => {
       wx.getSetting({
         success: ({ authSetting }) => {
+          console.log(authSetting)
           
           !this.globalData.isSigned &&
             wx.getUserInfo({
@@ -47,7 +57,7 @@ App({
                   this.userInfoReadyCallback(res)
                 }
               },
-              fail: err => wx.showToast({ title: '请先授权哦', icon: 'none' })
+              fail: err => wx.showToast({ title: '请先授权哦', icon: 'none', image: '/assets/icons/unauthorized.png', duration: 2000 })
             })
         },
         fail: err => reject(err),

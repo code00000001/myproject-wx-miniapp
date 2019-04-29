@@ -2,11 +2,23 @@
 const isIOS = () => {
   let result;
   wx.getSystemInfo({
-    success: res => {
-      result = res.platform === 'ios';
+    success: ({ platform }) => {
+      result = platform === 'ios';
     },
+    fail: () => { result = false }
   });
   return result;
 };
 
-export { isIOS }
+const isAuthorized = () => {
+  let result;
+  wx.getSetting({
+    success: ({ authSetting }) => {
+      result = authSetting['scope.userInfo'];
+    },
+    fail: () => { result = false }
+  });
+  return result;
+};
+
+export { isIOS, isAuthorized };
