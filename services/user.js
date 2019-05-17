@@ -73,11 +73,21 @@ const fetchLatestUserInfo = () =>
     }
   })
 
+const fetchRemoveFollowId = followId =>
+  request(`${baseUrl}:8082/wap/user/removeFollowId`, {
+    body: {
+      appId,
+      token: getApp().globalData.token,
+      followId
+    }
+  })
+
 export { 
   login, 
   fetchPosts, 
   fetchFollowings,
   fetchLatestUserInfo, 
   fetchRecordPointUrl, 
-  fetchSectionPointUrl
+  fetchSectionPointUrl,
+  fetchRemoveFollowId
 };

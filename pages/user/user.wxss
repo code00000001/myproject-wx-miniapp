@@ -21,7 +21,7 @@
 
 .profile__name {
   margin: 30rpx 0;
-  font-size: 38rpx;
+  font-size: 40rpx;
   font-weight: bold;
 }
 

@@ -1,12 +1,12 @@
-<view wx:if="{{ followings }}" class="column">
+<view wx:if="{{ followings.length }}" class="column">
   <view class="flw-item shadow radius" wx:for="{{ followings }}" wx:key="unique">
-    <image src="{{ item.url }}"></image>
+    <image lazy-load src="{{ item.url }}"></image>
     <view class="flw-item__main row">
       <view class="flw-item__main__l column">
         <view class="flw-item__main__l__name grey">{{ item.name }}</view>
       </view>
       <view class="flw-item__tail column">
-        <text class="lightgrey">已关注</text>
+        <text bindtap="handleRemoveFollowId" data-id="{{ item.id }}" class="lightgrey">取消关注</text>
       </view>
     </view>
   </view>

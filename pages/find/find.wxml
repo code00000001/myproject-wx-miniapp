@@ -29,5 +29,5 @@
 </view>
 
 <view class="content_choice">
-  <button wx:if="{{src}}" class="choice_btn" catchtap="uploadFn">上传</button>
+  <button wx:if="{{ src }}" class="choice_btn" catchtap="uploadFn">上传</button>
 </view>

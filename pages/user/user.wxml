@@ -3,9 +3,10 @@
 <authmodal wx:if="{{ isAuthModalShown }}" bind:confirm="handleConfirm"></authmodal>
 <view class='profile'>
   <image
+    class="shadow"
     catchtap="handleManualLogin"
     src='{{ userinfo.url }}' 
-    mode='aspectFill'></image>
+    mode='aspectFill' />
   <text class='profile__name grey'>{{ userinfo.name }}</text>
   <text class='profile__lv lightgrey'>LV.{{ userinfo.level }}</text>
 </view>

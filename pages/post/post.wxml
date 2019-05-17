@@ -7,7 +7,7 @@
     <image 
       src="{{ item.url }}" 
       mode="aspectFill"
-      lazy-load="true"
+      lazy-load
       data-src="{{ item.url }}"
       catchtap="previewImage"></image>
     <view

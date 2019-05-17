@@ -54,8 +54,8 @@ Page({
    */
   onShow: function () {
     wx.getStorageSync('authorized') === 'true'
-    && this.setData({ isAuthModalShown: false }, () => 
-      !app.globalData.isSigned 
+      && this.setData({ isAuthModalShown: false }, () => 
+      ! app.globalData.isSigned 
       ? app._login(() => this.fetchWebview(), () => this.fetchWebview())
       : this.fetchWebview()
     )

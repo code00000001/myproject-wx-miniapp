@@ -1,6 +1,6 @@
 // pages/following/following.js
 
-import { fetchFollowings } from '../../services/user';
+import { fetchFollowings, fetchRemoveFollowId } from '../../services/user';
 
 const app = getApp();
 
@@ -37,6 +37,23 @@ Page({
     });
 
     wx.showNavigationBarLoading();
+  },
+
+  removeById(followings, id) {
+    return followings.filter(item => item.id !== id);
+  },
+
+  handleRemoveFollowId({ currentTarget: { dataset: {id}}}) {
+    console.log(this.data.followings);
+    fetchRemoveFollowId(id)
+    .then(({ data: { code}}) => {
+      code === 200 ?
+      this.setData({
+        followings: this.removeById(this.data.followings, id)
+      }) :
+      wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 })
+    })
+    .catch(() => wx.showToast({ title: '服务器走丢啦', icon: 'none', image: '/assets/icons/sad.png', duration: 2000 }));
   },
 
   /**

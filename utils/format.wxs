@@ -30,7 +30,7 @@ var explainTimestamp = function(timestamp) {
   // x * 1000 毫秒时间戳
   if (interval > 2592000 * 1000) {
     return '30天前';
-  } else if (interval > 129600 * 1000) {
+  } else if (interval > 1296000 * 1000) {
     return '15天前';
   } else if (interval > 604800 * 1000) {
     return '一周前';
