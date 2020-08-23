@@ -22,12 +22,18 @@
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false,
 		"showShadowRootInWxmlPanel": true,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.5",
 	"appid": "wx98b26c58b58e3a89",
-	"projectname": "convergency-3d",
+	"projectname": "myproject-wx-miniapp",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
