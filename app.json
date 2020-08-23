@@ -12,7 +12,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "游鱼崽旅行记录",
+    "navigationBarTitleText": "JV旅行糖水日记",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -23,13 +23,13 @@
         "iconPath": "assets/icons/view_1.png",
         "selectedIconPath": "assets/icons/view_1_active.png",
         "pagePath": "pages/index/index",
-        "text": "看点"
+        "text": "游记"
       },
       {
         "iconPath": "assets/icons/camera_1.png",
         "selectedIconPath": "assets/icons/camera_1_active.png",
         "pagePath": "pages/find/find",
-        "text": "记录"
+        "text": "发布"
       },
       {
         "iconPath": "assets/icons/user_1.png",
